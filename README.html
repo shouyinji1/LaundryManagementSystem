@@ -1,0 +1,52 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title></title>
+<style id="system" type="text/css">*{margin:0;padding:0;}body {	font:13.34px helvetica,arial,freesans,clean,sans-serif;	color:black;	line-height:1.4em;	background-color: #F8F8F8;	padding: 0.7em;}p {	margin:1em 0;	line-height:1.5em;}table {	font-size:inherit;	font:100%;	margin:1em;}table th{border-bottom:1px solid #bbb;padding:.2em 1em;}table td{border-bottom:1px solid #ddd;padding:.2em 1em;}input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}select,option{padding:0 .25em;}optgroup{margin-top:.5em;}pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}pre {	margin:1em 0;	font-size:12px;	background-color:#eee;	border:1px solid #ddd;	padding:5px;	line-height:1.5em;	color:#444;	overflow:auto;	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;	-webkit-border-radius:3px;	-moz-border-radius:3px;border-radius:3px;white-space: pre-wrap;word-wrap:break-word;}pre code {	padding:0;	font-size:12px;	background-color:#eee;	border:none;}code {	font-size:12px;	background-color:#f8f8ff;	color:#444;	padding:0 .2em;	border:1px solid #dedede;}img{border:0;max-width:100%;}abbr{border-bottom:none;}a{color:#4183c4;text-decoration:none;}a:hover{text-decoration:underline;}a code,a:link code,a:visited code{color:#4183c4;}h2,h3{margin:1em 0;}h1,h2,h3,h4,h5,h6{border:0;}h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}h3{margin-top:1em;}hr{border:1px solid #ddd;}ul{margin:1em 0 1em 2em;}ol{margin:1em 0 1em 2em;}ul li,ol li{margin-top:.5em;margin-bottom:.5em;}ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}dt{font-weight:bold;margin-left:1em;}dd{margin-left:2em;margin-bottom:1em;}@media screen and (min-width: 768px) {    body {        width: 748px;        margin:10px auto;    }}</style><style id="custom" type="text/css"></style></head>
+<body marginheight="0"><h1>LaundryManagementSystem</h1>
+<p>洗衣房管理系统
+
+</p>
+<h3>1. 开发、环境要求及说明</h3>
+<ul>
+<li>Tomcat版本&gt;7</li>
+<li>本项目没有使用<code>web.xml</code>作为Web组件信息说明，而是使用了注解<code>@WebServlet</code></li>
+<li>本项目仍处于初始开发阶段</li>
+</ul>
+<h3>2. GIT简单使用教程</h3>
+<h4>2.1 克隆本项目的远程存储库代码：</h4>
+<pre><code>git clone https://github.com/shouyinji1/LaundryManagementSystem</code></pre>
+<p>或者（如果网不好可以用这个命令）：
+
+</p>
+<pre><code>git clone --depth=1 https://github.com/shouyinji1/LaundryManagementSystem</code></pre>
+<p><strong>注</strong>：<code>depth</code>用于指定克隆深度，为1即表示只克隆最近一次commit.
+
+</p>
+<h4>2.2 更新本地存储库步骤：</h4>
+<pre><code>git pull    # 将远程存储库中的更改合并到当前分支中</code></pre>
+<p><strong>注意</strong>：这个命令一定要没事多敲一敲，特别是在写代码之前。
+
+</p>
+<h4>2.3 提交步骤：</h4>
+<pre><code>git add .    # 将修改添加到暂存区
+git commit -m "更新日志"    # 将暂存区内容添加到本地仓库中
+git pull    # 获取远程存储库的更改，合并到本地分支中
+git push    # 将本地分支的更新，推送到远程主机</code></pre>
+<h4>2.4 其它常用命令：</h4>
+<pre><code>git status    # 显示工作目录和暂存区的状态
+git log    # 显示提交日志信息
+git diff    # 显示提交和工作树等之间的更改
+git stash    # 把所有未提交的修改（包括暂存的和非暂存的）都保存起来,并且将当前代码切换到HEAD commit上.</code></pre>
+<h4>2.5 相关介绍</h4>
+<ul>
+<li><a href="https://www.yiibai.com/git/git_basic_concepts.html" title="Git基础概念 - 易百教程">Git基础概念 - 易百教程</a></li>
+<li><a href="https://www.yiibai.com/git/git_basic_concepts.html" title="Git基础和原理 - 易百教程">Git基础和原理 - 易百教程</a></li>
+<li><a href="https://www.yiibai.com/git/git-quick-start.html" title="Git快速入门 - 易百教程">Git快速入门 - 易百教程</a></li>
+</ul>
+<h3>3. 在线Markdown编辑器</h3>
+<ul>
+<li><a href="http://www.mdeditor.com/" title="Markdown在线编辑器 - MdEditor">Markdown在线编辑器 - MdEditor</a></li>
+<li><a href="https://markdown.com.cn/editor/" title="在线markdown编辑器_微信公众号markdown排版工具">在线markdown编辑器_微信公众号markdown排版工具</a></li>
+<li><a href="http://mahua.jser.me/" title=" MaHua 在线markdown编辑器"> MaHua 在线markdown编辑器</a></li>
+</ul>
+</body></html>
