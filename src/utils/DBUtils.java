@@ -1,4 +1,4 @@
-package utils;
+﻿package utils;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,7 +7,7 @@ import com.mysql.jdbc.Connection;
 
 public class DBUtils {
 	public static Connection getConnection(){
-    	String dbUserName = "sa";
+    	String dbUserName = "admin";
     	String dbUserPasswd = "hellojava";
     	String dbURL = "jdbc:mysql://localhost:3306/StudentInfoManagement?"
     	            + "user="+dbUserName+"&password="+dbUserPasswd+"&useUnicode=true&characterEncoding=UTF8";
