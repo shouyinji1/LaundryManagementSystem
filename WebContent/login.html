@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>洗衣房管理系统</title>
+	<link href="css/login.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<main>
+		<div class="container">
+			<form class="form" action="LoginServlet" method="post">
+				<h3>洗衣房管理系统</h3>
+				<p>登录</p>
+				<input type="text" autofocus="autofocus" name="username" placeholder="请输入账号" required="required"><br />
+				<input type="password" name="password" placeholder="请输入密码" required="required">
+				<p>权限级别</p>
+				<span class="radio">
+					<input type="radio" name="level" value="用户" checked="checked"><span>用户</span>
+					<input type="radio" name="level" value="管理员"><span>管理员</span>
+				</span>
+				<input id="submit" type="submit" name="submit" value="登录">
+			</form>
+		</div>
+	</main>
+</body>
+</html>
