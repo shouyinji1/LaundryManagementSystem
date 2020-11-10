@@ -8,7 +8,7 @@ import com.mysql.jdbc.Connection;
 public class DBUtils {
 	public static Connection getConnection(){
     	String dbUserName = "admin";
-    	String dbUserPasswd = "hellojava";
+    	String dbUserPasswd = "123456";
     	String dbURL = "jdbc:mysql://localhost:3306/StudentInfoManagement?"
     	            + "user="+dbUserName+"&password="+dbUserPasswd+"&useUnicode=true&characterEncoding=UTF8";
     	//String dbURL="jdbc:mysql://localhost:3306/StudentInfoManagement";
