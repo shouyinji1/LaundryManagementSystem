@@ -8,30 +8,23 @@ GRANT ALL PRIVILEGES ON `LaundryManagementSystem`.* TO 'sa'@'localhost';
 create database LaundryManagementSystem;
 use LaundryManagementSystem
 
+
 -- 创建表
 create table User(
-	name nvarchar(15) NOT NULL comment '用户名',
-	id int primary key AUTO_INCREMENT comment '用户唯一ID',
+	id int PRIMARY KEY AUTO_INCREMENT comment '用户唯一ID',
+	name nvarchar(15) UNIQUE NOT NULL comment '用户名',
 	password varchar(30) NOT NULL default '123456' comment '密码',
+	level char(6) NOT NULL DEFAULT 'user' comment '用户级别' check(level in ('user','admin')),
 	phone int,
-	email nvarchar(20)
+	email nvarchar(50)
 ) comment '用户信息表';
-
-create table Admin(
-	name nvarchar(15) not null comment '用户名',
-	id int primary key auto_increment comment '用户唯一id',
-	password varchar(30) not null default 'abcdefg' comment '密码',
-	phone int,
-	email nvarchar(20)
-) comment '管理员信息表';
 
 
 -- 插入数据
-insert into User(name,phone,email) values('abc','10086','abc@hyit.com');
-insert into User(name,password,phone,email) values('a','1','10086','abc@hyit.com');
-
-insert into Admin(name,phone,email) values('admin','10086','abc@hyit.com');
-insert into Admin(name,password,phone,email) values('a','1','10086','abc@hyit.com');
+insert into User(name,phone,email) values('abc','10086','abc@lms.com');
+insert into User(name,password,phone,email) values('a','1','10010','a@lms.com');
+insert into User(name,level,phone,email) values('admin','admin','120','admin@lms.com');
+insert into User(name,password,level,phone,email) values('minda','1','admin','110','minda@lms.com');
 
 
 -- 查看表结构

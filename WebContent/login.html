@@ -8,19 +8,21 @@
 <body>
 	<main>
 		<div class="container">
-			<form class="form" action="LoginServlet" method="post">
+			<form class=form>
 				<h3>洗衣房管理系统</h3>
 				<p>登录</p>
 				<input type="text" autofocus="autofocus" name="username" placeholder="请输入账号" required="required"><br />
 				<input type="password" name="password" placeholder="请输入密码" required="required">
 				<p>权限级别</p>
 				<span class="radio">
-					<input type="radio" name="level" value="用户" checked="checked"><span>用户</span>
-					<input type="radio" name="level" value="管理员"><span>管理员</span>
+					<input type="radio" name="level" value="user" checked="checked"><span>用户</span>
+					<input type="radio" name="level" value="admin"><span>管理员</span>
 				</span>
-				<input id="submit" type="submit" name="submit" value="登录">
+				<input id="submit" type="submit" name="submit" onClick="toLogin()" value="登录">
 			</form>
 		</div>
 	</main>
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>
