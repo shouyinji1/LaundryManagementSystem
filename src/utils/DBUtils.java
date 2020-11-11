@@ -7,11 +7,10 @@ import com.mysql.jdbc.Connection;
 
 public class DBUtils {
 	public static Connection getConnection(){
-    	String dbUserName = "admin";
+    	String dbUserName = "sa";
     	String dbUserPasswd = "123456";
-    	String dbURL = "jdbc:mysql://localhost:3306/StudentInfoManagement?"
+    	String dbURL = "jdbc:mysql://localhost:3306/LaundryManagementSystem?"
     	            + "user="+dbUserName+"&password="+dbUserPasswd+"&useUnicode=true&characterEncoding=UTF8";
-    	//String dbURL="jdbc:mysql://localhost:3306/StudentInfoManagement";
     	Connection conn = null;
     	try {
     		Class.forName("com.mysql.jdbc.Driver");	// 要求JVM去com.mysql.jdbc下找Driver类并将其载入内存
