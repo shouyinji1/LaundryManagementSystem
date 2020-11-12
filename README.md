@@ -14,6 +14,11 @@
 * Eclipse IDE 2020-09
 * OpenJDK 11.0.9
 * javac 1.8.0\_272
+* mariadb  Ver 15.1 Distrib 10.3.25-MariaDB
+
+#### 1.2 分包结构
+
+
 
 
 ### 2. GIT简单使用教程
@@ -74,3 +79,4 @@ Eclipse IDE也支持Markdown的编辑及预览。
 
 ### 4. 其它类似项目参考
 * [lvpengyue/washRoom](https://github.com/lvpengyue/washRoom "lvpengyue/washRoom")
+* [java+jsp+servlet 洗衣店管理系统分析与设计](https://blog.csdn.net/QQ21503882/article/details/104269614 "java+jsp+servlet 洗衣店管理系统分析与设计")

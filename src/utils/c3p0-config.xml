@@ -1,0 +1,30 @@
+<c3p0-config>
+	<!-- 命名的配置 -->
+	<named-config name="db">
+		<property name="driverClass">com.mysql.cj.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/hgsx?&amp;useSSL=false&amp;serverTimezone=UTC</property>
+		<property name="user">root</property>
+		<property name="password">123456</property>
+		<!-- 如果池中数据连接不够时一次增长多少个 -->
+		<property name="acquireIncrement">5</property>
+		<property name="initialPoolSize">20</property>
+		<property name="minPoolSize">10</property>
+		<property name="maxPoolSize">40</property>
+		<property name="maxStatements">20</property>
+		<property name="maxStatementsPerConnection">5</property>
+	</named-config>
+	
+	<!-- <named-config name="db2">
+		<property name="driverClass">com.mysql.cj.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/demo?&amp;useSSL=false&amp;serverTimezone=UTC</property>
+		<property name="user">root</property>
+		<property name="password">123456</property>
+		如果池中数据连接不够时一次增长多少个
+		<property name="acquireIncrement">5</property>
+		<property name="initialPoolSize">20</property>
+		<property name="minPoolSize">10</property>
+		<property name="maxPoolSize">40</property>
+		<property name="maxStatements">20</property>
+		<property name="maxStatementsPerConnection">5</property>
+	</named-config> -->
+</c3p0-config> 
