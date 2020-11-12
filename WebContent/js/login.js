@@ -9,7 +9,7 @@ function toLogin(){
 	var level=form[2].value;
 	if(username=="" || password=="")	//如果账户或密码为空，退出函数
 		return
-	//html  json  text   xml
+
 	$.ajax({
 		type: "post",//方法类型
 		url: "LoginServlet" ,
