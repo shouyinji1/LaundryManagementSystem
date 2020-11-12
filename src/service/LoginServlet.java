@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.UserDao;
+import entity.User;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -44,10 +47,12 @@ public class LoginServlet extends HttpServlet {
 		String level = request.getParameter("level");
 		PrintWriter out= response.getWriter();
 		try {
-			if(username.equals("abc") && password.equals("123456") && level.equals("用户")) {
-				out.println("Successful");
+			UserDao userDao=new UserDao();
+			User user=userDao.login(username, password, level);
+			if(user != null) {
+				out.write("yes");
 			}else
-				out.println("Fault");
+				out.write("no");
 		}finally {
 			out.close();
 		}
