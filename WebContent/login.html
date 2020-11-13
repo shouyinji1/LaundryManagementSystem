@@ -8,7 +8,8 @@
 <body>
 	<main>
 		<div class="container">
-			<form class=form>
+			<form class=form action="LoginServlet1" method="POST">
+			<!-- <form class=form> -->
 				<h3>洗衣房管理系统</h3>
 				<p>登录</p>
 				<input type="text" autofocus="autofocus" name="username" placeholder="请输入账号" required="required"><br />
@@ -18,7 +19,7 @@
 					<input type="radio" name="level" value="user" checked="checked"><span>用户</span>
 					<input type="radio" name="level" value="admin"><span>管理员</span>
 				</span>
-				<input id="submit" type="submit" name="submit" onClick="toLogin()" value="登录">
+				<input id="submit" type="submit" name="submit" onClick="toLogin()" value="Login">
 			</form>
 		</div>
 	</main>

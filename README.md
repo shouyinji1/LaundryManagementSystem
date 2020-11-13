@@ -22,6 +22,7 @@
 * entity: 实体模型
 * service: 用于处理页面
 * utils: 数据库连接工具
+* practice: 专用于练习的包
 
 
 ### 2. GIT简单使用教程
