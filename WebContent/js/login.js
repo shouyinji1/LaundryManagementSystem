@@ -4,23 +4,19 @@
 
 function toLogin(){
 	var form=$('form').serializeArray();
-	var username=form[0].value;
-	var password=form[1].value;
-	var level=form[2].value;
-	if(username=="" || password=="")	//如果账户或密码为空，退出函数
-		return
+	if(form[0].value=="" || form[1].value=="")	//如果账户或密码为空，退出函数
+		return;
 
 	$.ajax({
 		type: "post",//方法类型
 		url: "LoginServlet" ,
 		dataType:"text",
 		async:true,
-		data: {"username":username,"password":password,"level":level},
+		data: form,
 		success: function (data) {
 			if (data=="no") {
 				alert("登录失败，请正确填写信息");
 	 		}else{
-				//alert("登录成功")
 				window.location.href="DashboardServlet";
 			}
 		},
