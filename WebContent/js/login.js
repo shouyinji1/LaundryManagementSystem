@@ -20,8 +20,8 @@ function toLogin(){
 			if (data=="no") {
 				alert("登录失败，请正确填写信息");
 	 		}else{
-				alert("登录成功")
-				//跳转到首页
+				//alert("登录成功")
+				window.location.href="DashboardServlet";
 			}
 		},
 		error : function() {
