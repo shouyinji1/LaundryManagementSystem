@@ -21,7 +21,7 @@ function toLogin(){
 			}
 		},
 		error : function() {
-			alert("异常请求！");
+			alert("异常请求！"+data.msg);
 		}
 	});
 }
