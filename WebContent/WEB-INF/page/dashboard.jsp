@@ -33,7 +33,7 @@
   </head>
   <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-	  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Company name</a>
+	  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">洗衣房管理</a>
 	  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
 	  	<span class="navbar-toggler-icon"></span>
 	  </button>
@@ -53,7 +53,7 @@
 	          <li class="nav-item">
 	            <a class="nav-link active" href="#">
 	              <span data-feather="home"></span>
-	              Dashboard <span class="sr-only">(current)</span>
+	              洗衣机列表<span class="sr-only">(current)</span>
 	            </a>
 	          </li>
 	          <li class="nav-item">
@@ -124,223 +124,9 @@
 	    </nav>
 	
 	    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-	
-	      <h2>Section title</h2>
-	      <div class="table-responsive">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>项目 </th>
-						<th>名称 </th>
-						<th>电话 </th>
-						<th>公司 </th>
-						<th>完成度 </th>
-						<th>任务</th>
-						<th>时间</th>
-						<th>操作</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>王者农药</td>
-						<td>天美工作室</td>
-						<td>(86) 1234 5678</td>
-						<td>企鹅公司</td>
-						<td><span class="pie">0.52/1.561</span></td>
-						<td>20%</td>
-						<td>2017.11.11</td>
-						<td>
-							<button class="btn btn-success btn-xs" type="button">查看</button>
-							<button class=" btn btn-danger btn-xs" type="button">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>王者农药</td>
-						<td>天美工作室</td>
-						<td>(86) 1234 5678</td>
-						<td>企鹅公司</td>
-						<td><span class="pie">6,9</span></td>
-						<td>40%</td>
-						<td>2017.11.11</td>
-						<td>
-							<button class="btn btn-success btn-xs" type="button">查看</button>
-							<button class=" btn btn-danger btn-xs" type="button">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>王者农药</td>
-						<td>天美工作室</td>
-						<td>(86) 1234 5678</td>
-						<td>企鹅公司</td>
-						<td><span class="pie">3,1</span></td>
-						<td>75%</td>
-						<td>2017.11.11</td>
-						<td>
-							<button class="btn btn-success btn-xs" type="button">查看</button>
-							<button class=" btn btn-danger btn-xs" type="button">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>王者农药</td>
-						<td>天美工作室</td>
-						<td>(86) 1234 5678</td>
-						<td>企鹅公司</td>
-						<td><span class="pie">4,9</span></td>
-						<td>18%</td>
-						<td>2017.11.11</td>
-						<td>
-							<button class="btn btn-success btn-xs" type="button">查看</button>
-							<button class=" btn btn-danger btn-xs" type="button">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>王者农药</td>
-						<td>天美工作室</td>
-						<td>(86) 1234 5678</td>
-						<td>企鹅公司</td>
-						<td><span class="pie">6,9</span></td>
-						<td>40%</td>
-						<td>2017.11.11</td>
-						<td>
-							<button class="btn btn-success btn-xs" type="button">查看</button>
-							<button class=" btn btn-danger btn-xs" type="button">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>王者农药</td>
-						<td>天美工作室</td>
-						<td>(86) 1234 5678</td>
-						<td>企鹅公司</td>
-						<td><span class="pie">0.52/1.561</span></td>
-						<td>20%</td>
-						<td>2017.11.11</td>
-						<td>
-							<button class="btn btn-success btn-xs" type="button">查看</button>
-							<button class=" btn btn-danger btn-xs" type="button">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>王者农药</td>
-						<td>天美工作室</td>
-						<td>(86) 1234 5678</td>
-						<td>企鹅公司</td>
-						<td><span class="pie">4,9</span></td>
-						<td>18%</td>
-						<td>2017.11.11</td>
-						<td>
-							<button class="btn btn-success btn-xs" type="button">查看</button>
-							<button class=" btn btn-danger btn-xs" type="button">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>王者农药</td>
-						<td>天美工作室</td>
-						<td>(86) 1234 5678</td>
-						<td>企鹅公司</td>
-						<td><span class="pie">0.52/1.561</span></td>
-						<td>20%</td>
-						<td>2017.11.11</td>
-						<td>
-							<button class="btn btn-success btn-xs" type="button">查看</button>
-							<button class=" btn btn-danger btn-xs" type="button">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>王者农药</td>
-						<td>天美工作室</td>
-						<td>(86) 1234 5678</td>
-						<td>企鹅公司</td>
-						<td><span class="pie">6,9</span></td>
-						<td>40%</td>
-						<td>2017.11.11</td>
-						<td>
-							<button class="btn btn-success btn-xs" type="button">查看</button>
-							<button class=" btn btn-danger btn-xs" type="button">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>王者农药</td>
-						<td>天美工作室</td>
-						<td>(86) 1234 5678</td>
-						<td>企鹅公司</td>
-						<td><span class="pie">3,1</span></td>
-						<td>75%</td>
-						<td>2017.11.11</td>
-						<td>
-							<button class="btn btn-success btn-xs" type="button">查看</button>
-							<button class=" btn btn-danger btn-xs" type="button">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>王者农药</td>
-						<td>天美工作室</td>
-						<td>(86) 1234 5678</td>
-						<td>企鹅公司</td>
-						<td><span class="pie">4,9</span></td>
-						<td>18%</td>
-						<td>2017.11.11</td>
-						<td>
-							<button class="btn btn-success btn-xs" type="button">查看</button>
-							<button class=" btn btn-danger btn-xs" type="button">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>王者农药</td>
-						<td>天美工作室</td>
-						<td>(86) 1234 5678</td>
-						<td>企鹅公司</td>
-						<td><span class="pie">6,9</span></td>
-						<td>40%</td>
-						<td>2017.11.11</td>
-						<td>
-							<button class="btn btn-success btn-xs" type="button">查看</button>
-							<button class=" btn btn-danger btn-xs" type="button">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>王者农药</td>
-						<td>天美工作室</td>
-						<td>(86) 1234 5678</td>
-						<td>企鹅公司</td>
-						<td><span class="pie">0.52/1.561</span></td>
-						<td>20%</td>
-						<td>2017.11.11</td>
-						<td>
-							<button class="btn btn-success btn-xs" type="button">查看</button>
-							<button class=" btn btn-danger btn-xs" type="button">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>王者农药</td>
-						<td>天美工作室</td>
-						<td>(86) 1234 5678</td>
-						<td>企鹅公司</td>
-						<td><span class="pie">4,9</span></td>
-						<td>18%</td>
-						<td>2017.11.11</td>
-						<td>
-							<button class="btn btn-success btn-xs" type="button">查看</button>
-							<button class=" btn btn-danger btn-xs" type="button">删除</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+			<div class="embed-responsive embed-responsive-21by9">
+			  <iframe class="embed-responsive-item" src="SelectAllWasherServlet" ></iframe>
+			</div>
 	    </main>
 	  </div>
 	</div>

@@ -1,5 +1,18 @@
 /* globals Chart:false, feather:false */
 
+function loadWasher(){
+	$.ajax({  
+		url:"SelectAllWasherServlet",//servlet文件的名称
+		type:"GET",
+		success:function(e){
+			alert("servlet调用成功！");
+		},
+		error : function() {
+			alert("异常请求！"+data.msg);
+		}
+	});
+}
+
 (function () {
   'use strict'
 
