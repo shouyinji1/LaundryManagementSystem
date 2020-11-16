@@ -52,7 +52,7 @@
 						<td>${washer.status}</td>
 						<td>
 							<button class="btn btn-success" type="button" onclick="">修改</button>
-							<button class="btn btn-danger" type="button" onclick="">删除</button>
+							<button class="btn btn-danger" type="button" onclick="deleteById(${washer.id})">删除</button>
 						</td>
 					</tr>	
 				</c:forEach>

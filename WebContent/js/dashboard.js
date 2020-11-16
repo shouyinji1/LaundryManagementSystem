@@ -2,7 +2,8 @@
 
 function loadWasher(){
 	$.ajax({  
-		url:"SelectAllWasherServlet",//servlet文件的名称
+		//url:"SelectAllWasherServlet",//servlet文件的名称
+		url:"selectAllWasherServlet.do",//servlet文件的名称
 		type:"GET",
 		success:function(e){
 			alert("servlet调用成功！");

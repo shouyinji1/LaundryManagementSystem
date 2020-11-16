@@ -9,7 +9,8 @@ function toLogin(){
 
 	$.ajax({
 		type: "post",//方法类型
-		url: "LoginServlet" ,
+		//url: "LoginServlet" ,
+		url: "loginServlet.do" ,
 		dataType:"text",
 		async:true,
 		data: form,
@@ -17,7 +18,8 @@ function toLogin(){
 			if (data=="no") {
 				alert("登录失败，请正确填写信息");
 	 		}else{
-				window.location.href="DashboardServlet";
+				window.location.href="dashboardServlet.do";
+				//window.location.href="DashboardServlet";
 			}
 		},
 		error : function() {

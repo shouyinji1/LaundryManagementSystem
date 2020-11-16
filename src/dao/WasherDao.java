@@ -37,4 +37,23 @@ public class WasherDao {
 		}
 		return results;
 	}
+	
+	//删除用户信息，返回一个int值表示状态,1：成功，0失败
+	public int deleteById(String id) {
+		Connection conn = DBUtils.getConnection();
+		String sql = "delete from Washer where id = ?;";
+		
+		int flag = 0;
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ps.setString(1, id);
+			flag = ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtils.closeConnection(conn);
+		}
+		return flag;
+	}
 }

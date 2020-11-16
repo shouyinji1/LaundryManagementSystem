@@ -25,3 +25,24 @@
 	$("[data-toggle='tooltip']").tooltip();
 
 })();
+
+//删除洗衣机
+function deleteById(id){
+	$.ajax({
+		type: "post",//方法类型
+		url: "deleteByIdServlet.do" ,
+		dataType:"text",
+		async:true,
+		data: {'id':id},
+		success: function (data) {
+			if (data=="no") {
+				alert("删除失败！")
+	 		}else{
+	 			location.reload();
+			}
+		},
+		error : function() {
+			alert("异常请求！"+data.msg);
+		}
+	});
+}
