@@ -36,6 +36,27 @@ insert into User(name,password,level,phone,email) values('minda','1','admin','11
 insert into Washer(name,type,price) values("1号洗衣机",'小号洗衣机',5);
 insert into Washer(name,type,price) values("2号洗衣机",'中号洗衣机',10);
 insert into Washer(name,type,price) values("3号洗衣机",'大号洗衣机',15);
+insert into Washer(name,type,price) values("4号洗衣机",'小号洗衣机',5);
+insert into Washer(name,type,price) values("5号洗衣机",'中号洗衣机',10);
+insert into Washer(name,type,price) values("6号洗衣机",'大号洗衣机',15);
+insert into Washer(name,type,price) values("7号洗衣机",'小号洗衣机',5);
+insert into Washer(name,type,price) values("8号洗衣机",'中号洗衣机',10);
+insert into Washer(name,type,price) values("9号洗衣机",'大号洗衣机',15);
+insert into Washer(name,type,price) values("10号洗衣机",'小号洗衣机',5);
+insert into Washer(name,type,price) values("11号洗衣机",'中号洗衣机',10);
+insert into Washer(name,type,price) values("12号洗衣机",'大号洗衣机',15);
+insert into Washer(name,type,price) values("13号洗衣机",'小号洗衣机',5);
+insert into Washer(name,type,price) values("14号洗衣机",'中号洗衣机',10);
+insert into Washer(name,type,price) values("15号洗衣机",'大号洗衣机',15);
+insert into Washer(name,type,price) values("16号洗衣机",'小号洗衣机',5);
+insert into Washer(name,type,price) values("17号洗衣机",'中号洗衣机',10);
+insert into Washer(name,type,price) values("18号洗衣机",'大号洗衣机',15);
+insert into Washer(name,type,price) values("19号洗衣机",'小号洗衣机',5);
+insert into Washer(name,type,price) values("20号洗衣机",'中号洗衣机',10);
+insert into Washer(name,type,price) values("21号洗衣机",'大号洗衣机',15);
+insert into Washer(name,type,price) values("22号洗衣机",'小号洗衣机',5);
+insert into Washer(name,type,price) values("23号洗衣机",'中号洗衣机',10);
+insert into Washer(name,type,price) values("24号洗衣机",'大号洗衣机',15);
 
 -- 查看表结构
 desc 表名;

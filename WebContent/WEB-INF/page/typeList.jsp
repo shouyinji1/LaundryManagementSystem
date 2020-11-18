@@ -2,13 +2,16 @@
     pageEncoding="utf-8"%>
 <!-- jstl库 -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="/page-tags" prefix="p"%>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>洗衣机管理</title>
-	<link href="bootstrap-4.5.3-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<!-- <link href="bootstrap-4.5.3-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 	<style>
 		body{
 			padding:50px;
@@ -16,15 +19,19 @@
 	</style>
 </head>
 <body>
-
-      <div class="app-title">
-        <div>
-          <h2>洗衣机列表</h2>
-        </div>
+	<div class="app-title">
+		<div>
+		  <h2>洗衣机列表</h2>
+		</div>
+		<ul class="app-breadcrumb breadcrumb side">
+			<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+			<li class="breadcrumb-item">洗衣机管理</li>
+			<!--   <li class="breadcrumb-item active"><a href="#">类型管理</a></li> -->
+		</ul>
       </div>
       <div class="row">
       	<div class="col-md-12">
-      		<button class="btn btn-primary" type="button" onclick="toAdd()">添加</button>
+      		<button class="btn btn-primary" type="button" onclick="addWasher()">添加</button>
       	</div>
         <div class="col-md-12">
           <div class="tile">
@@ -43,21 +50,22 @@
                 <tbody>
                 <!-- el表达式-->
                 <!-- varStatus  var的下标序号 -->
-                <c:forEach items="${washer}" var="washer" varStatus="status">
+                <c:forEach items="${page.data}" var="washer" varStatus="status">
 					<tr>
-						<td>${washer.id}</td>
+						<td>${status.count}</td>
 						<td>${washer.name}</td>
 						<td>${washer.type}</td>
 						<td>${washer.price}</td>
 						<td>${washer.status}</td>
 						<td>
-							<button class="btn btn-success" type="button" onclick="">修改</button>
+							<button class="btn btn-success" type="button" onclick="window.location.href='updateWasher.do?id='+${washer.id}">修改</button>
 							<button class="btn btn-danger" type="button" onclick="deleteById(${washer.id})">删除</button>
 						</td>
 					</tr>	
 				</c:forEach>
                 </tbody>
               </table>
+              <p:page action="washerListServlet.do" />
             </div>
           </div>
         </div>

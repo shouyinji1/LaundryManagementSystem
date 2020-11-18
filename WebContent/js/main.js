@@ -46,3 +46,10 @@ function deleteById(id){
 		}
 	});
 }
+
+function addWasher(){
+	window.location.href="toAddWasher.do";
+}
+function updateWasher(){
+	window.location.href="updateWasher.do?id="+id;
+}
