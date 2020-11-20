@@ -11,6 +11,7 @@
 
     <!-- Bootstrap core CSS -->
 	<link href="bootstrap-4.5.3-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
 
     <style>
       .bd-placeholder-img {
@@ -24,7 +25,7 @@
 
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+          font-size: 3.5em;
         }
       }
     </style>
@@ -33,16 +34,18 @@
   </head>
   <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-	  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">洗衣房管理</a>
-	  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-	  	<span class="navbar-toggler-icon"></span>
-	  </button>
-	  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-	  <ul class="navbar-nav px-3">
-	    <li class="nav-item text-nowrap">
-	      <a class="nav-link" href="#">Sign out</a>
-	    </li>
-	  </ul>
+		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">洗衣房管理</a>
+		<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+		<li class="navbar px-0 dropdown"><a class="nav-link text-nowrap" href="#" data-toggle="dropdown">Sign out</a>
+		  <ul class="dropdown-menu dropdown-menu-md-right">
+			<li><a class="dropdown-item" href="#"><i class="fa fa-cog fa-lg"></i>个人信息</a></li>
+			<li><a class="dropdown-item" href="#"><i class="fa fa-user fa-lg"></i>修改密码</a></li>
+			<li><a class="dropdown-item" href="#"><i class="fa fa-sign-out fa-lg"></i>退出登录</a></li>
+		  </ul>
+		</li>
 	</nav>
 
 	<div class="container-fluid">
@@ -124,7 +127,6 @@
 	    </nav>
 	
 	    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-			<!--<div class="embed-responsive embed-responsive-21by9">-->
 			<div class="container">
 			  <!-- <iframe class="embed-responsive-item" src="washerListServlet.do" scrolling="no"></iframe>-->
 			  <iframe class="embed-responsive-item" src="washerListServlet.do" onload="this.height=this.contentWindow.document.body.scrollHeight" width="100%" scrolling="no" frameborder="0"></iframe>
@@ -134,6 +136,8 @@
 	  </div>
 	</div>
 	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+	<script src="js/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script src="js/dashboard.js"></script></body>

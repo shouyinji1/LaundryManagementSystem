@@ -15,8 +15,8 @@ create table User(
 	name nvarchar(15) UNIQUE NOT NULL comment '用户名',
 	password varchar(30) NOT NULL default '123456' comment '密码',
 	level char(6) NOT NULL DEFAULT 'user' comment '用户级别' check(level in ('user','admin')),
-	phone int commit '电话号码',
-	email nvarchar(50) commit '电子邮箱'
+	phone int comment '电话号码',
+	email nvarchar(50) comment '电子邮箱'
 ) comment '用户信息表';
 
 create table Washer(
