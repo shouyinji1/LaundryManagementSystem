@@ -11,52 +11,66 @@ use LaundryManagementSystem
 
 -- 创建表
 create table User(
-	id int PRIMARY KEY AUTO_INCREMENT comment '用户唯一ID',
+	ID int PRIMARY KEY AUTO_INCREMENT comment '用户唯一ID',
 	name nvarchar(15) UNIQUE NOT NULL comment '用户名',
-	password varchar(30) NOT NULL default '123456' comment '密码',
-	level char(6) NOT NULL DEFAULT 'user' comment '用户级别' check(level in ('user','admin')),
-	phone int comment '电话号码',
-	email nvarchar(50) comment '电子邮箱'
-) comment '用户信息表';
+	password nvarchar(30) NOT NULL default '123456' comment '密码',
+	level char(6) NOT NULL DEFAULT 'user' comment '用户级别或类型' check(level in ('user','admin')),
+	tel varchar(15) comment '联系电话'
+) CHARSET=utf8 comment '用户信息表';
 
 create table Washer(
-	id INT PRIMARY KEY AUTO_INCREMENT comment '洗衣机唯一ID',
-	name nvarchar(15) unique NOT NULL comment '洗衣机名称',
-	type nvarchar(15) NOT NULL comment '洗衣机规格',
-	price INT NOT NULL comment '洗衣价格',
+	ID INT PRIMARY KEY AUTO_INCREMENT comment '洗衣机唯一ID',
 	status nchar(5) NOT NULL default '未使用' comment '洗衣机使用状态' check(status in('使用中','未使用'))
-) comment '洗衣机信息表';
+) CHARSET=utf8 comment '洗衣机信息表';
+
+create table Price(
+	Mode NCHAR(10) PRIMARY KEY COMMENT '洗衣价目表',
+	Price FLOAT(6,2) NOT NULL COMMENT '洗衣价格',
+	Duration INT NOT NULL COMMENT '洗衣时长（以分钟计）'
+) CHARSET=utf8 comment '洗衣价目表';
+
+create table `Order`(
+	ID INT PRIMARY KEY AUTO_INCREMENT comment '订单唯一ID',
+	UserID INT NOT NULL comment '用户ID',
+	WasherID INT NOT NULL comment '洗衣机ID',
+	Mode NCHAR(10) NOT NULL comment '洗衣模式',
+	GeneratedTime DATE NOT NULL comment '订单生成时间',
+	FOREIGN KEY(UserID) REFERENCES User(ID),
+	FOREIGN KEY(WasherID) REFERENCES Washer(ID),
+	FOREIGN KEY(Mode) REFERENCES Price(Mode)
+) CHARSET=utf8 comment '订单信息表';
+
 
 -- 插入数据
-insert into User(name,phone,email) values('abc','10086','abc@lms.com');
-insert into User(name,password,phone,email) values('a','1','10010','a@lms.com');
-insert into User(name,level,phone,email) values('admin','admin','120','admin@lms.com');
-insert into User(name,password,level,phone,email) values('minda','1','admin','110','minda@lms.com');
+insert into User(name,tel) values('abc','10086');
+insert into User(name,password,tel) values('a','1','10010');
+insert into User(name,level,tel) values('admin','admin','120');
+insert into User(name,password,level,tel) values('minda','1','admin','110');
 
-insert into Washer(name,type,price) values("1号洗衣机",'小号洗衣机',5);
-insert into Washer(name,type,price) values("2号洗衣机",'中号洗衣机',10);
-insert into Washer(name,type,price) values("3号洗衣机",'大号洗衣机',15);
-insert into Washer(name,type,price) values("4号洗衣机",'小号洗衣机',5);
-insert into Washer(name,type,price) values("5号洗衣机",'中号洗衣机',10);
-insert into Washer(name,type,price) values("6号洗衣机",'大号洗衣机',15);
-insert into Washer(name,type,price) values("7号洗衣机",'小号洗衣机',5);
-insert into Washer(name,type,price) values("8号洗衣机",'中号洗衣机',10);
-insert into Washer(name,type,price) values("9号洗衣机",'大号洗衣机',15);
-insert into Washer(name,type,price) values("10号洗衣机",'小号洗衣机',5);
-insert into Washer(name,type,price) values("11号洗衣机",'中号洗衣机',10);
-insert into Washer(name,type,price) values("12号洗衣机",'大号洗衣机',15);
-insert into Washer(name,type,price) values("13号洗衣机",'小号洗衣机',5);
-insert into Washer(name,type,price) values("14号洗衣机",'中号洗衣机',10);
-insert into Washer(name,type,price) values("15号洗衣机",'大号洗衣机',15);
-insert into Washer(name,type,price) values("16号洗衣机",'小号洗衣机',5);
-insert into Washer(name,type,price) values("17号洗衣机",'中号洗衣机',10);
-insert into Washer(name,type,price) values("18号洗衣机",'大号洗衣机',15);
-insert into Washer(name,type,price) values("19号洗衣机",'小号洗衣机',5);
-insert into Washer(name,type,price) values("20号洗衣机",'中号洗衣机',10);
-insert into Washer(name,type,price) values("21号洗衣机",'大号洗衣机',15);
-insert into Washer(name,type,price) values("22号洗衣机",'小号洗衣机',5);
-insert into Washer(name,type,price) values("23号洗衣机",'中号洗衣机',10);
-insert into Washer(name,type,price) values("24号洗衣机",'大号洗衣机',15);
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
+insert into Washer values();
 
 -- 查看表结构
 desc 表名;
