@@ -20,9 +20,11 @@
 
 * dao: 操作数据库
 * entity: 实体模型
-* service: 用于处理页面
+* controller: 用于处理页面,主要是Servlet
 * utils: 数据库连接工具
-* practice: 专用于练习的包
+* filter: 拦截器
+* tag: 分页工具包
+* service: 后台服务
 
 
 ### 2. GIT简单使用教程

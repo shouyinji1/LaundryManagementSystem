@@ -3,8 +3,8 @@ package service;
 import java.util.ArrayList;
 
 import dao.WasherDao;
+import entity.Page;
 import entity.Washer;
-import utils.Page;
 
 public class WasherService {
 	WasherDao washerDao=new WasherDao();

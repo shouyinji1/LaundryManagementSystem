@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
+import entity.Page;
 import entity.Washer;
 import utils.DBUtils;
-import utils.Page;
 
 /** 洗衣机相关数据表的操作 */
 public class WasherDao {

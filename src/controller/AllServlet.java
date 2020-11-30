@@ -19,10 +19,10 @@ import com.sun.org.apache.xalan.internal.xsltc.compiler.util.ErrorMessages;
 import dao.UserDao;
 import dao.WasherDao;
 import entity.Dashboard;
+import entity.Page;
 import entity.User;
 import entity.Washer;
 import service.WasherService;
-import utils.Page;
 
 /**
  * Servlet implementation class AllServlet
