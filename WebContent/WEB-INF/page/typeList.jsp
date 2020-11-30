@@ -40,9 +40,7 @@
                 <thead>
                   <tr>
                     <td>ID</td>
-					<td>洗衣机名称</td>
-					<td>洗衣机类型</td>
-					<td>洗衣价格</td>
+					<td>洗衣机编号</td>
 					<td>使用状态</td>
 					<td>操作</td>
                   </tr>
@@ -53,9 +51,7 @@
                 <c:forEach items="${page.data}" var="washer" varStatus="status">
 					<tr>
 						<td>${status.count}</td>
-						<td>${washer.name}</td>
-						<td>${washer.type}</td>
-						<td>${washer.price}</td>
+						<td>${washer.id}</td>
 						<td>${washer.status}</td>
 						<td>
 							<button class="btn btn-success" type="button" onclick="window.location.href='updateWasher.do?id='+${washer.id}">修改</button>

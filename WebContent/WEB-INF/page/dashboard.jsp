@@ -34,16 +34,16 @@
   </head>
   <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">洗衣房管理</a>
+		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">${dashboardInfo.brand}</a>
 		<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
 		  <span class="navbar-toggler-icon"></span>
 		</button>
 		<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-		<li class="navbar px-0 dropdown"><a class="nav-link text-nowrap" href="#" data-toggle="dropdown">Sign out</a>
+		<li class="navbar px-0 dropdown"><a class="nav-link text-nowrap" href="#" data-toggle="dropdown">${user.name}</a>
 		  <ul class="dropdown-menu dropdown-menu-md-right">
 			<li><a class="dropdown-item" href="#"><i class="fa fa-cog fa-lg"></i>个人信息</a></li>
 			<li><a class="dropdown-item" href="#"><i class="fa fa-user fa-lg"></i>修改密码</a></li>
-			<li><a class="dropdown-item" href="#"><i class="fa fa-sign-out fa-lg"></i>退出登录</a></li>
+			<li><a class="dropdown-item" href="logoutServlet.do"><i class="fa fa-sign-out fa-lg"></i>退出登录</a></li>
 		  </ul>
 		</li>
 	</nav>

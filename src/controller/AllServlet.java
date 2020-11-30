@@ -18,6 +18,7 @@ import com.sun.org.apache.xalan.internal.xsltc.compiler.util.ErrorMessages;
 
 import dao.UserDao;
 import dao.WasherDao;
+import entity.Dashboard;
 import entity.User;
 import entity.Washer;
 import service.WasherService;
@@ -56,7 +57,7 @@ public class AllServlet extends HttpServlet {
 			// 执行方法
 			method.invoke(this, request, response);
 		} catch (Exception e) {
-			throw new RuntimeException("调用方法出错！"+e.getLocalizedMessage());
+			throw new RuntimeException("调用方法出错！"+methodName+"\n"+e.getLocalizedMessage());
 		}
 	}
 
@@ -67,11 +68,24 @@ public class AllServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+	
+	/** 普通用户、管理员首页跳转 */
 	protected void dashboardServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User user=(User)request.getSession().getAttribute("user");
+		Dashboard dashboard=new Dashboard();
+		switch (user.getLevel()) {
+		case "admin":	// 如果是管理员
+			dashboard.setBrand("洗衣房管理");
+			break;
+		default:	// 默认为普通用户
+			dashboard.setBrand("欢迎光临！");
+			break;
+		}
+		request.getSession().setAttribute("dashboardInfo", dashboard);
 		request.getRequestDispatcher("WEB-INF/page/dashboard.jsp").forward(request, response);	
 	}
-
+	
+	/** 登录servlet */
 	protected void loginServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
@@ -84,6 +98,8 @@ public class AllServlet extends HttpServlet {
 			UserDao userDao=new UserDao();
 			User user=userDao.login(username, password, level);
 			if(user != null) {
+				request.getSession().setAttribute("user", user);
+				//System.out.println(request.getSession().getAttribute("user"));
 				out.write("yes");
 			}else
 				out.write("no");
@@ -91,7 +107,33 @@ public class AllServlet extends HttpServlet {
 			out.close();
 		}
 	}
-	
+
+	protected void logoutServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getSession().removeAttribute("user");
+		request.getSession().removeAttribute("dashboardInfo");
+		//request.getRequestDispatcher("login.html").forward(request, response);
+		response.sendRedirect("login.html");
+	}
+
+	/** 注册普通用户 */
+	protected void registerServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		PrintWriter out= response.getWriter();
+		try {
+			UserDao userDao=new UserDao();
+			int flag=userDao.register(username, password, "user");
+			if(flag==1) {
+				out.write("yes");
+			}else
+				out.write("no");
+		}finally {
+			out.close();
+		}
+	}
+
+	/** 分页查询洗衣机信息 */
 	protected void washerListServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 获取分页对象
 		Page<Washer> page = (Page<Washer>)request.getAttribute("page");
@@ -115,6 +157,7 @@ public class AllServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/page/typeList.jsp").forward(request, response);
 	}
 
+	/** 删除洗衣机信息 */
 	protected void deleteByIdServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String id= request.getParameter("id");
@@ -134,15 +177,9 @@ public class AllServlet extends HttpServlet {
 	
 	//新增数据
 	public void washerAdd(HttpServletRequest request,HttpServletResponse response) throws IOException {
-		String washerName=request.getParameter("washerName");
-		String washerType=request.getParameter("washerType");
-		String price=request.getParameter("price");
 		String status=request.getParameter("status");
 		Washer washer=new Washer();
 		
-		washer.setName(washerName);
-		washer.setType(washerType);
-		washer.setPrice(price);
 		washer.setStatus(status);
 		
 		WasherDao washerDao=new WasherDao();
@@ -163,24 +200,16 @@ public class AllServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/page/washerUpdate.jsp").forward(request, response);
 	}
 	
-	/**
-	 * 保存修改的数据
-	 */
+	/** 保存修改的数据 */
 	public void updateWasherById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		//获取到参数
 		request.setCharacterEncoding("UTF-8");
 		String id =request.getParameter("id");
-		String name=	request.getParameter("washerName");
-		String type=	request.getParameter("washerType");
-		String price=	request.getParameter("price");
 		String status=	request.getParameter("status");
 		
 		Washer washer=new Washer();
 		washer.setId(id);
-		washer.setName(name);
-		washer.setPrice(price);
 		washer.setStatus(status);
-		washer.setType(type);
 		
 		int result=0;
 		result = new WasherDao().updateById(washer);

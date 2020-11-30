@@ -11,8 +11,12 @@ import entity.Washer;
 import utils.DBUtils;
 import utils.Page;
 
+/** 洗衣机相关数据表的操作 */
 public class WasherDao {
-	//分页查询所有信息
+	/** 分页查询所有信息
+	 * @curPage 从查询总表的第curPage行开始分页
+	 * @pageSize 分页大小
+	 * @return 表 */
 	public ArrayList<Washer> querySplitedList(int curPage,int pageSize){
 		Connection conn=DBUtils.getConnection();
 		String sql="select * from Washer order by id asc limit "+curPage+","+pageSize;
@@ -23,10 +27,10 @@ public class WasherDao {
 			while(rs.next()) {
 				Washer washer=new Washer();
 				washer.setId(rs.getString("id"));
-				washer.setName(rs.getString("name"));
-				washer.setPrice(rs.getString("price"));
+				//washer.setName(rs.getString("name"));
+				//washer.setPrice(rs.getString("price"));
 				washer.setStatus(rs.getString("status"));
-				washer.setType(rs.getString("type"));
+				//washer.setType(rs.getString("type"));
 				results.add(washer);
 			}
 			rs.close();
@@ -71,10 +75,7 @@ public class WasherDao {
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
 				washer.setId(rs.getString("id"));
-				washer.setName(rs.getString("name"));
-				washer.setPrice(rs.getString("price"));
 				washer.setStatus(rs.getString("status"));
-				washer.setType(rs.getString("type"));
 			}
 			rs.close();
 			ps.close();
@@ -106,14 +107,12 @@ public class WasherDao {
 	
 	//插入洗衣机，1成功，0失败
 	public int insertWasher(Washer washer) {
-		String sql="insert into Washer(name,type,price) values(?,?,?);";
+		String sql="insert into Washer(status) values(?);";
 		Connection conn = DBUtils.getConnection();
 		int flag=0;
 		try {
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-			ps.setString(1, washer.getName());
-			ps.setString(2, washer.getType());
-			ps.setString(3, washer.getPrice());
+			ps.setString(1, washer.getStatus());
 			flag = ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
@@ -127,13 +126,10 @@ public class WasherDao {
 	//更新洗衣机信息，1：成功，0失败
 	public int updateById(Washer washer) {
 		Connection conn = DBUtils.getConnection();
-		String sql = "update Washer set name=?,type=?,price=?,status=? where id=?";
+		String sql = "update Washer set status=?";
 		int flag = 0;
 		try {
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-			ps.setString(1, washer.getName());
-			ps.setString(2, washer.getType());
-			ps.setString(3, washer.getPrice());
 			ps.setString(4, washer.getStatus());
 			ps.setString(5, washer.getId());
 			flag = ps.executeUpdate();

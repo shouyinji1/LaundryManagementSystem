@@ -41,7 +41,15 @@ git clone --depth=1 https://github.com/shouyinji1/LaundryManagementSystem
 
 **注**：`depth`用于指定克隆深度，为1即表示只克隆最近一次commit.
 
-#### 2.2 更新合并本地存储库步骤：
+#### 2.2 放弃本地修改，强制使用远程代码覆盖本地：
+
+```
+git fetch --all	# 从远程拉取最新的代码，不merge
+git reset --hard origin/main	# 使用远程main分支的代码强制覆盖
+git pull	# 从远程拉取最新的代码，自动merge
+```
+
+#### 2.3 更新合并本地存储库步骤：
 
 ```
 git pull    # 将远程存储库中的更改合并到当前分支中
@@ -49,7 +57,7 @@ git pull    # 将远程存储库中的更改合并到当前分支中
 
 **注意**：这个命令一定要没事多敲一敲，特别是在写代码之前。
 
-#### 2.3 提交步骤：
+#### 2.4 提交步骤：
 
 ```
 git status	# 查看工作目录和暂存区的状态
@@ -59,7 +67,7 @@ git pull	# 获取远程存储库的更改，合并到本地分支中
 git push	# 将本地分支的更新，推送到远程主机
 ```
 
-#### 2.4 其它常用命令：
+#### 2.5 其它常用命令：
 
 ```
 git log	# 显示提交日志信息
@@ -67,7 +75,7 @@ git diff	# 显示提交和工作树等之间的更改
 git stash	# 把所有未提交的修改（包括暂存的和非暂存的）都保存起来,并且将当前代码切换到HEAD commit上.
 ```
 
-#### 2.5 相关介绍
+#### 2.6 相关介绍
 
 * [Git基础概念 - 易百教程](https://www.yiibai.com/git/git_basic_concepts.html "Git基础概念 - 易百教程")
 * [Git基础和原理 - 易百教程](https://www.yiibai.com/git/git_basic_concepts.html "Git基础和原理 - 易百教程")
