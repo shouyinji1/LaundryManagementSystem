@@ -57,7 +57,8 @@ public class LoginFilter implements Filter {
 			//如果用户没登陆，重定向到登录页面
 			if(user==null) {
 				//如果用户没登陆，跳转到登录页面
-				request.getRequestDispatcher("login.html").forward(request, response);
+				//request.getRequestDispatcher("login.html").forward(request, response);
+				resp.sendRedirect("login.html");
 			}else {
 				chain.doFilter(req, resp);
 			}
