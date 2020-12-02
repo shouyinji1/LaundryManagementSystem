@@ -13,11 +13,6 @@ function loadWasher(){
 	});
 }
 
-function changeMenu(menuName){
-	/* 获取 iframe  dom对象        修改src属性 */
-	//document.getElementById("main").src=menuName;
-	document.getElementsByClassName("embed-responsive-item")[0].src=menuName;
-}
 
 function updateUserInfo(){
 	var data = $("#fm1").serialize(); 
