@@ -15,7 +15,7 @@
 		}
 	</style>
 </head>
-<body>
+<body onload="checked();">
       <div class="app-title">
         <div>
           <p>洗衣机信息修改</p>
@@ -32,30 +32,18 @@
             <div class="tile-body">
               <div class="form-horizontal">
                 <div class="form-group row">
-                  <label class="control-label col-md-3">洗衣机名称</label>
-                  	<input type="hidden" name="id" id="id" value="${washer.id}"> 
+                  <label class="control-label col-md-3">设备ID：</label>
                   <div class="col-md-8">
-                    <input name="washerName" id="washerName" class="form-control" value="${washer.name}" type="text" placeholder="请输入名称">
+                  	<input name="id" id="id" value="${washer.id}" readonly="readonly"> 
                   </div>
                 </div>
                  <div class="form-group row">
-                  <label class="control-label col-md-3">洗衣机类型</label>
-                  <div class="col-md-8">
-                    <input name="washerType" id="washerType" class="form-control" value="${washer.type}" type="text" placeholder="请输入类型">
-                  </div>
-                </div>
-                 <div class="form-group row">
-                  <label class="control-label col-md-3">洗衣价格</label>
-                  <div class="col-md-8">
-                   	<input name="price" id="price" class="form-control" type="text" value="${washer.price}" placeholder="请输入价格">
-                  </div>
-                </div>
-                 <div class="form-group row">
-                  <label class="control-label col-md-3">使用状态</label>
-                  <div class="col-md-8">
-                   	<input name="status" id="status" class="form-control" type="text" value="${washer.status}" placeholder="请输入使用状态">
-                  </div>
-                </div>
+					<label class="control-label col-md-3">使用状态：</label>
+					<span class="radio">
+						<input type="radio" name="status" value="未使用" id="unused"/><span>未使用</span>
+						<input type="radio" name="status" value="使用中" id="using" /><span>使用中</span>
+					</span>
+                 </div>
               </div>
             </div>
             <div class="tile-footer">
@@ -64,7 +52,7 @@
                   <button class="btn btn-primary" type="button" id="submitBtn">
                   	保存
                   </button>
-                   <button class="btn btn-primary" type="button" onclick="javascript:window.location.href='typeList.do'" id="retBtn">
+                   <button class="btn btn-primary" type="button" onclick="javascript:window.location.href='washerListServlet.do'" id="retBtn">
                   	返回
                   </button>
                 </div>
@@ -73,23 +61,32 @@
           </div>
          </form>
      </div>
-</body>
-<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-	 $(function(){
-		//匿名函数   没有名字的方法
-		$("#submitBtn").click(function(){
-			//验证表单项是否为空
-			var washerName = $("#washerName").val();
-			if(washerName==null || washerName==""){
-				alert("装备名称不能为空");
-				//鼠标聚焦到指定的输入框中
-				$("#washerName").focus();
-				return false;
+	<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript">
+		 $(function(){
+			//匿名函数   没有名字的方法
+			$("#submitBtn").click(function(){
+				//验证表单项是否为空
+				//var washerName = $("#washerName").val();
+				//if(washerName==null || washerName==""){
+				//	alert("装备名称不能为空");
+				//	//鼠标聚焦到指定的输入框中
+				//	$("#washerName").focus();
+				//	return false;
+				//}
+				//提交表单
+				$("#myform").submit();
+			});
+		}) 
+	</script>
+	<script type="text/javascript">
+		function checked(){
+			if('${washer.status}'=='使用中'){
+				document.getElementById('using').checked=true;
+			}else{
+				document.getElementById('unused').checked=true;
 			}
-			//提交表单
-			$("#myform").submit();
-		});
-	}) 
-</script>
+		}
+	</script>
+</body>
 </html>

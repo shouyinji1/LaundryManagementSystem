@@ -31,28 +31,13 @@
             <h3 class="tile-title">添加</h3>
             <div class="tile-body">
               <div class="form-horizontal">
-                <div class="form-group row">
-                  <label class="control-label col-md-3">洗衣机名称</label>
-                  <div class="col-md-8">
-                    <input name="washerName" id="washerName" class="form-control" type="text" placeholder="请输入名称">
-                  </div>
-                </div>
                  <div class="form-group row">
-                  <label class="control-label col-md-3">洗衣机类型</label>
-                  <div class="col-md-8">
-                    <input name="washerType" id="washerType" class="form-control" type="text" placeholder="请输入类型">
-                  </div>
-                </div>
-                 <div class="form-group row">
-                  <label class="control-label col-md-3">洗衣价格</label>
-                  <div class="col-md-8">
-                    <input name="price" id="price" class="form-control" type="text" placeholder="请输入洗衣价格">
-                  </div>
-                </div>
-                 <div class="form-group row">
-                  <label class="control-label col-md-3">使用状态</label>
-                  <div class="col-md-8">
-                    <input name="status" id="status" class="form-control" type="text" placeholder="请输入使用状态">
+					<label class="control-label col-md-3">使用状态：</label>
+					<span class="radio">
+						<input type="radio" name="status" value="未使用" checked="checked" /><span>未使用</span>
+						<input type="radio" name="status" value="使用中" /><span>使用中</span>
+					</span>
+                 </div>
               </div>
             </div>
             <div class="tile-footer">
@@ -70,25 +55,25 @@
           </div>
          </form>
      </div>
+	<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//匿名函数，没有名字的方法
+			$("#submitBtn").click(function(){
+				//验证表单项是否为空
+				//var washerName = $("#washerName").val();
+				//if(washerName==null || washerName==""){
+				//	alert("类型名称不能为空");
+				//	$("#washerName").focus();	//鼠标自动聚焦到指定的输入框
+				//	return false;
+				//}
+				//提交表单
+				$("#myform").submit();
+			});
+			$("#retBtn").click(function(){
+				window.location.href="washerListServlet.do";
+			})
+		}) 
+	</script>
 </body>
-<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-	$(function(){
-		//匿名函数，没有名字的方法
-		$("#submitBtn").click(function(){
-			//验证表单项是否为空
-			var washerName = $("#washerName").val();
-			if(washerName==null || washerName==""){
-				alert("类型名称不能为空");
-				$("#washerName").focus();	//鼠标自动聚焦到指定的输入框
-				return false;
-			}
-			//提交表单
-			$("#myform").submit();
-		});
-		$("#retBtn").click(function(){
-			window.location.href="washerListServlet.do";
-		})
-	}) 
-</script>
 </html>

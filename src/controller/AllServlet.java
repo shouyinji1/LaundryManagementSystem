@@ -45,7 +45,7 @@ public class AllServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 获取请求的URI地址信息
-		// http://localhost:8080/equip/typeList.do
+		// http://localhost:8080/equip/.do
 		String url = request.getRequestURI();
 		
 		// 截取其中的方法名typeList
@@ -178,6 +178,7 @@ public class AllServlet extends HttpServlet {
 	
 	//新增数据
 	public void washerAdd(HttpServletRequest request,HttpServletResponse response) throws IOException {
+		request.setCharacterEncoding("UTF-8");
 		String status=request.getParameter("status");
 		Washer washer=new Washer();
 		
@@ -199,6 +200,7 @@ public class AllServlet extends HttpServlet {
 		Washer washer=new WasherDao().queryWasherInfoById(Integer.parseInt(id));
 		request.setAttribute("washer", washer);
 		request.getRequestDispatcher("/WEB-INF/page/washerUpdate.jsp").forward(request, response);
+		//request.getRequestDispatcher("/WEB-INF/page/washerAdd.jsp").forward(request, response);
 	}
 	
 	/** 保存修改的洗衣机数据 */
@@ -211,9 +213,8 @@ public class AllServlet extends HttpServlet {
 		Washer washer=new Washer();
 		washer.setId(id);
 		washer.setStatus(status);
-		
 		int result=0;
-		result = new WasherDao().updateById(washer);
+		result = new WasherDao().updateById(status, id);
 		if(result>0){
 			//重定向   在此sevlet方法中调用另外一个方法
 			response.sendRedirect("washerListServlet.do");

@@ -124,14 +124,14 @@ public class WasherDao {
 	}
 
 	//更新洗衣机信息，1：成功，0失败
-	public int updateById(Washer washer) {
+	public int updateById(String status, String id) {
 		Connection conn = DBUtils.getConnection();
-		String sql = "update Washer set status=?";
+		String sql = "update Washer set status=? where id=?";
 		int flag = 0;
 		try {
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-			ps.setString(4, washer.getStatus());
-			ps.setString(5, washer.getId());
+			ps.setString(1, status);
+			ps.setString(2, id);
 			flag = ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
