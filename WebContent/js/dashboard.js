@@ -14,6 +14,47 @@ function loadWasher(){
 	});
 }
 
+function changeMenu(menuName){
+	/* 获取 iframe  dom对象        修改src属性 */
+	//document.getElementById("main").src=menuName;
+	document.getElementsByClassName("embed-responsive-item")[0].src=menuName;
+}
+
+function updateUserInfo(){
+	var data = $("#fm1").serialize(); 
+	$.ajax({
+			type:'post',  
+			url:'toUpdateUserInfo.do', 
+			cache: false,
+			data:data,  //重点必须为一个变量如：data
+			dataType:'text', 
+			success:function(res){      
+				if(res=='yes'){
+					  alert("修改成功！");
+					  location.reload();
+				}else
+					alert("修改失败！");
+			},
+			error:function(){ 
+				 alert("请求失败")
+			}
+	})
+}
+
+function showModal(id){
+	//打开隐藏的模态框
+	$(id).modal();
+	//设置模态框剧中
+	$(id).on('show.bs.modal', function(){
+		var $this = $(this);
+		var $modal_dialog = $this.find('.modal-dialog');
+		//设置为块级元素     inline 内联元素
+		$this.css('display', 'block');
+		$modal_dialog.css({'margin-top': Math.max(0, ($(window.parent).height() - $modal_dialog.height()) / 2) - 50 });
+	});
+} 
+
+
 (function () {
   'use strict'
 

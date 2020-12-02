@@ -108,6 +108,7 @@ public class AllServlet extends HttpServlet {
 		}
 	}
 
+	/** 退出登录 */
 	protected void logoutServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().removeAttribute("user");
 		request.getSession().removeAttribute("dashboardInfo");
@@ -200,7 +201,7 @@ public class AllServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/page/washerUpdate.jsp").forward(request, response);
 	}
 	
-	/** 保存修改的数据 */
+	/** 保存修改的洗衣机数据 */
 	public void updateWasherById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		//获取到参数
 		request.setCharacterEncoding("UTF-8");
@@ -219,6 +220,44 @@ public class AllServlet extends HttpServlet {
 		}else{
 			response.getWriter().write("系统异常,保存数据失败,3秒后跳转回修改页面");
 			response.setHeader("refresh", "3;url=washerListServlet.do");
+		}
+	}
+	
+	/** 获取用户个人信息跳转 */
+	public void getUserInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.getRequestDispatcher("WEB-INF/page/userInfo.jsp").forward(request, response);
+	}
+
+	/** 更新用户信息 */
+	public void toUpdateUserInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.setCharacterEncoding("UTF-8");
+		User user=(User)request.getSession().getAttribute("user");
+		String id=user.getId();
+		String username=request.getParameter("username");
+		String tel=request.getParameter("tel");
+		UserDao userDao=new UserDao();
+		int flag=userDao.updateUserInfo(username, tel,id);
+		if(flag==1) {
+			response.getWriter().write("yes");
+			user.setName(username);
+			user.setTel(tel);
+			request.getSession().setAttribute("user", user);
+		}else {
+			response.getWriter().write("no");
+		}
+	}
+	
+	/** 更新密码 */
+	public void updatePassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.setCharacterEncoding("UTF-8");
+		String id=request.getParameter("id");
+		String newPassword=request.getParameter("newpassword");
+		UserDao userDao=new UserDao();
+		int flag=userDao.updatePassword(id,newPassword);
+		if(flag==1) {
+			response.getWriter().write("yes");
+		}else {
+			response.getWriter().write("no");
 		}
 	}
 }

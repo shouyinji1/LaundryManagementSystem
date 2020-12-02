@@ -57,6 +57,8 @@ public class UserDao {
 				user.setName(username);
 				user.setPassword(password);
 				user.setLevel(level);
+				user.setId(rs.getString("ID"));
+				user.setTel(rs.getString("tel"));
 			}
 			//释放资源
 			rs.close();
@@ -82,7 +84,50 @@ public class UserDao {
 			ps.setString(1, username);
 			ps.setString(2, password);
 			ps.setString(3, level);
-			flag = ps.executeUpdate();//查询结果集
+			flag = ps.executeUpdate();
+			ps.close();	//释放资源
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtils.closeConnection(conn);
+		}
+		return flag;
+	}
+	
+	/** 更新用户信息 */
+	public int updateUserInfo(String username,String tel,String id) {
+		Connection conn = DBUtils.getConnection();
+		String sql = "update User set name=?,tel=? where id=?;";
+		int flag=0;
+		try {
+			//获取PreparedStatement对象
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			//对sql参数进行动态赋值
+			ps.setString(1, username);
+			ps.setString(2, tel);
+			ps.setString(3, id);
+			flag = ps.executeUpdate();
+			ps.close();	//释放资源
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtils.closeConnection(conn);
+		}
+		return flag;
+	}
+	
+	/** 更新密码 */
+	public int updatePassword(String id,String newPassword) {
+		Connection conn = DBUtils.getConnection();
+		String sql = "update User set password=? where id=?;";
+		int flag=0;
+		try {
+			//获取PreparedStatement对象
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			//对sql参数进行动态赋值
+			ps.setString(1, newPassword);
+			ps.setString(2, id);
+			flag = ps.executeUpdate();
 			ps.close();	//释放资源
 		} catch (SQLException e) {
 			e.printStackTrace();
