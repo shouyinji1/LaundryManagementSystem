@@ -26,7 +26,7 @@
         </ul>
       </div>
       <div class="col-md-6">
-      	<form action="washerAdd.do" method="post" id="myform">
+      	<form action="washerAdd.adminServlet" method="post" id="myform">
           <div class="tile">
             <h3 class="tile-title">添加</h3>
             <div class="tile-body">
@@ -71,7 +71,7 @@
 				$("#myform").submit();
 			});
 			$("#retBtn").click(function(){
-				window.location.href="washerListServlet.do";
+				window.location.href="washerList.adminServlet";
 			})
 		}) 
 	</script>

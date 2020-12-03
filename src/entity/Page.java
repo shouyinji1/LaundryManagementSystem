@@ -1,11 +1,13 @@
 package entity;
 
 import java.util.HashMap;
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class Page<T> {
+public class Page<T> implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	/** 
 	* 分页数据 

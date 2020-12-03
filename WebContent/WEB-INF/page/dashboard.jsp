@@ -32,7 +32,7 @@
 		<!-- Custom styles for this template -->
 		<link href="css/dashboard.css" rel="stylesheet">
 	</head>
-	<body onload="firstPage();">
+	<body>
 		<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
 			<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">${dashboardInfo.brand}</a>
 			<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -130,7 +130,7 @@
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div class="container">
 				  <!-- <iframe class="embed-responsive-item" src="washerListServlet.do" scrolling="no"></iframe>-->
-				  <iframe class="embed-responsive-item" src="washerListServlet.do" onload="this.height=this.contentWindow.document.body.scrollHeight" width="100%" scrolling="no" frameborder="0"></iframe>
+				  <iframe class="embed-responsive-item" src="${dashboardInfo.iframe_src}" onload="this.height=this.contentWindow.document.body.scrollHeight" width="100%" scrolling="no" frameborder="0"></iframe>
 				</div>
 			</main>
 		  </div>
@@ -230,15 +230,6 @@
 						}); 
 					}
 				}
-			}
-		</script>
-		<script type="text/javascript">
-			function firstPage(){
-				if(user.level=='user'){
-					document.getElementsByClassName("embed-responsive-item")[0].src=;
-				}
-				/* 获取 iframe  dom对象        修改src属性 */
-				//document.getElementById("main").src=menuName;
 			}
 		</script>
     </body>

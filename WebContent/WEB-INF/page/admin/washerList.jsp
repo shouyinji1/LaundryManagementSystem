@@ -39,7 +39,7 @@
               <table class="table table-hover table-bordered" id="sampleTable">
                 <thead>
                   <tr>
-                    <td>ID</td>
+                    <td>No.</td>
 					<td>洗衣机编号</td>
 					<td>使用状态</td>
 					<td>操作</td>
@@ -54,14 +54,14 @@
 						<td>${washer.id}</td>
 						<td>${washer.status}</td>
 						<td>
-							<button class="btn btn-success" type="button" onclick="window.location.href='updateWasher.do?id='+${washer.id}">修改</button>
+							<button class="btn btn-success" type="button" onclick="window.location.href='updateWasher.adminServlet?id='+${washer.id}">修改</button>
 							<button class="btn btn-danger" type="button" onclick="deleteById(${washer.id})">删除</button>
 						</td>
 					</tr>	
 				</c:forEach>
                 </tbody>
               </table>
-              <p:page action="washerListServlet.do" />
+              <p:page action="washerList.adminServlet" />
             </div>
           </div>
         </div>
@@ -69,6 +69,6 @@
     <script src="js/jquery-3.5.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="js/admin.js"></script>
 </body>
 </html>

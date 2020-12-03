@@ -16,7 +16,7 @@ import service.WasherService;
 /**
  * Servlet implementation class NormalUserServlet
  */
-@WebServlet("*.NUServlet")
+@WebServlet("*.normalUserServlet")
 public class NormalUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -80,6 +80,6 @@ public class NormalUserServlet extends HttpServlet {
 		page = washerService.getWasherPage(page);
 		// 将数据返回给页面
 		request.setAttribute("page", page);
-		request.getRequestDispatcher("/WEB-INF/page/typeList.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/page/normalUser/washerList.jsp").forward(request, response);
 	}
 }

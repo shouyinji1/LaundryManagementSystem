@@ -30,7 +30,6 @@ import service.WasherService;
 @WebServlet("*.do")
 public class AllServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	WasherService washerService=new WasherService();
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -73,14 +72,7 @@ public class AllServlet extends HttpServlet {
 	protected void dashboardServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user=(User)request.getSession().getAttribute("user");
 		Dashboard dashboard=new Dashboard();
-		switch (user.getLevel()) {
-		case "admin":	// 如果是管理员
-			dashboard.setBrand("洗衣房管理");
-			break;
-		default:	// 默认为普通用户
-			dashboard.setBrand("欢迎光临！");
-			break;
-		}
+		dashboard.setLevel(user.getLevel());
 		request.getSession().setAttribute("dashboardInfo", dashboard);
 		request.getRequestDispatcher("WEB-INF/page/dashboard.jsp").forward(request, response);	
 	}
@@ -134,95 +126,6 @@ public class AllServlet extends HttpServlet {
 		}
 	}
 
-	/** 分页查询洗衣机信息 */
-	protected void washerListServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 获取分页对象
-		Page<Washer> page = (Page<Washer>)request.getAttribute("page");
-		//判断是否是第一次请求
-		if (page == null) {
-			page = new Page<Washer>(5);// 参数为每页显示数量
-		}
-		// 获取当前要查的页码
-		String curPageStr = request.getParameter("curPage");
-		if (curPageStr != null) {
-			//如果不是第一次进入,将页面传过来的页码赋值给初始的第一页
-			page.setCurPage(Integer.parseInt(curPageStr));
-		}else {
-			page.setCurPage(1);	//第一次进入的时候，默认为第一页
-		}
-
-		// 去数据库查询类型管理表，获取数据
-		page = washerService.getWasherPage(page);
-		// 将数据返回给页面
-		request.setAttribute("page", page);
-		request.getRequestDispatcher("/WEB-INF/page/typeList.jsp").forward(request, response);
-	}
-
-	/** 删除洗衣机信息 */
-	protected void deleteByIdServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		String id= request.getParameter("id");
-		int flag=new WasherDao().deleteById(id);
-		PrintWriter out= response.getWriter();
-		if(flag==1) {
-			out.write("yes");
-		}else {
-			out.write("no");
-		}
-	}
-	
-	//新增跳转
-	public void toAddWasher(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("WEB-INF/page/washerAdd.jsp").forward(request, response);
-	}
-	
-	//新增数据
-	public void washerAdd(HttpServletRequest request,HttpServletResponse response) throws IOException {
-		request.setCharacterEncoding("UTF-8");
-		String status=request.getParameter("status");
-		Washer washer=new Washer();
-		
-		washer.setStatus(status);
-		
-		WasherDao washerDao=new WasherDao();
-		int result=washerDao.insertWasher(washer);
-		if(result>0) {
-			response.sendRedirect("washerListServlet.do");
-		}else {
-			response.getWriter().write("系统异常，新增数据失败，3秒后跳回页面");
-			response.setHeader("refresh", "3;toAddType.do");
-		}
-	}
-	
-	//更新页面跳转
-	public void updateWasher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		String  id=	request.getParameter("id");
-		Washer washer=new WasherDao().queryWasherInfoById(Integer.parseInt(id));
-		request.setAttribute("washer", washer);
-		request.getRequestDispatcher("/WEB-INF/page/washerUpdate.jsp").forward(request, response);
-		//request.getRequestDispatcher("/WEB-INF/page/washerAdd.jsp").forward(request, response);
-	}
-	
-	/** 保存修改的洗衣机数据 */
-	public void updateWasherById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		//获取到参数
-		request.setCharacterEncoding("UTF-8");
-		String id =request.getParameter("id");
-		String status=	request.getParameter("status");
-		
-		Washer washer=new Washer();
-		washer.setId(id);
-		washer.setStatus(status);
-		int result=0;
-		result = new WasherDao().updateById(status, id);
-		if(result>0){
-			//重定向   在此sevlet方法中调用另外一个方法
-			response.sendRedirect("washerListServlet.do");
-		}else{
-			response.getWriter().write("系统异常,保存数据失败,3秒后跳转回修改页面");
-			response.setHeader("refresh", "3;url=washerListServlet.do");
-		}
-	}
 	
 	/** 获取用户个人信息跳转 */
 	public void getUserInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

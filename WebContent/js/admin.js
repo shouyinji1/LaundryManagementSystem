@@ -30,7 +30,7 @@
 function deleteById(id){
 	$.ajax({
 		type: "post",//方法类型
-		url: "deleteByIdServlet.do" ,
+		url: "deleteById.adminServlet" ,
 		dataType:"text",
 		async:true,
 		data: {'id':id},
@@ -48,8 +48,8 @@ function deleteById(id){
 }
 
 function addWasher(){
-	window.location.href="toAddWasher.do";
+	window.location.href="toAddWasher.adminServlet";
 }
 function updateWasher(){
-	window.location.href="updateWasher.do?id="+id;
+	window.location.href="updateWasher.adminServlet?id="+id;
 }

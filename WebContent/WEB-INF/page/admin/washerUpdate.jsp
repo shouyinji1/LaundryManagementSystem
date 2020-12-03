@@ -26,7 +26,7 @@
         </ul>
       </div>
       <div class="col-md-6">
-      	<form action="updateWasherById.do" method="post" id="myform">
+      	<form action="updateWasherById.adminServlet" method="post" id="myform">
           <div class="tile">
             <h3 class="tile-title">修改</h3>
             <div class="tile-body">
@@ -52,7 +52,7 @@
                   <button class="btn btn-primary" type="button" id="submitBtn">
                   	保存
                   </button>
-                   <button class="btn btn-primary" type="button" onclick="javascript:window.location.href='washerListServlet.do'" id="retBtn">
+                   <button class="btn btn-primary" type="button" onclick="javascript:window.location.href='washerList.adminServlet'" id="retBtn">
                   	返回
                   </button>
                 </div>
