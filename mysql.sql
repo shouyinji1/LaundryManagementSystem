@@ -20,7 +20,8 @@ create table User(
 
 create table Washer(
 	ID INT PRIMARY KEY AUTO_INCREMENT comment '洗衣机唯一ID',
-	status nchar(5) NOT NULL default '未使用' comment '洗衣机使用状态' check(status in('使用中','未使用'))
+	name nvarchar(30) comment '洗衣机名称',
+	location nvarchar(50) comment '洗衣机位置'
 ) CHARSET=utf8 comment '洗衣机信息表';
 
 create table Price(
@@ -32,9 +33,9 @@ create table Price(
 create table `Order`(
 	ID INT PRIMARY KEY AUTO_INCREMENT comment '订单唯一ID',
 	UserID INT NOT NULL comment '用户ID',
-	WasherID INT NOT NULL comment '洗衣机ID',
+	WasherID INT NOT NULL UNIQUE comment '洗衣机ID',
 	Mode NCHAR(10) NOT NULL comment '洗衣模式',
-	GeneratedTime DATE NOT NULL comment '订单生成时间',
+	GeneratedTime DATETIME NOT NULL comment '订单生成时间',
 	FOREIGN KEY(UserID) REFERENCES User(ID),
 	FOREIGN KEY(WasherID) REFERENCES Washer(ID),
 	FOREIGN KEY(Mode) REFERENCES Price(Mode)
@@ -47,7 +48,8 @@ insert into User(name,password,tel) values('a','1','10010');
 insert into User(name,level,tel) values('admin','admin','120');
 insert into User(name,password,level,tel) values('minda','1','admin','110');
 
-insert into Washer values();
+insert into Washer(name,location) values('1号洗衣机','1号宿舍楼第1层');
+insert into Washer(name,location) values('2号洗衣机','1号宿舍楼第1层');
 insert into Washer values();
 insert into Washer values();
 insert into Washer values();
@@ -72,6 +74,29 @@ insert into Washer values();
 insert into Washer values();
 insert into Washer values();
 
+insert into `Price`(Mode,Price,Duration) values("标准洗","4","40");
+insert into `Price`(Mode,Price,Duration) values("快洗","3","20");
+insert into `Price`(Mode,Price,Duration) values("单脱水","1","5");
+
+insert into `Order`(UserID,WasherID,Mode,GeneratedTime) values(3,6,"标准洗","2020-12-03");
+
+
+-- 分页查询所有洗衣机和对应的使用者并升序排序
+select ID,name,location,UserID from (
+	select Washer.ID,name,location,UserID from Washer 
+	left outer join `Order` on Washer.ID=`Order`.washerID
+)temp order by ID asc limit 1,5;
+		
+-- 分页查询所有闲置洗衣机和正在被UserID使用的洗衣机
+select ID,name,location,UserID from (
+	select Washer.ID,name,location,UserID from Washer 
+	left outer join `Order` on Washer.ID=`Order`.washerID
+)temp where UserID is null or UserID='' or UserID=3 order by ID asc limit 0,10;
+
+select Washer.ID,name,location from Washer,`Order`
+	where Washer.ID != `Order`.washerID or (Washer.ID=`Order`.washerID and `Order`.UserID=3)
+	order by Washer.ID asc limit 1,5;
+	
 -- 查看表结构
 desc 表名;
 

@@ -89,8 +89,8 @@ public class AdminServlet extends HttpServlet {
 	protected void deleteById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String id= request.getParameter("id");
-		int flag=new WasherDao().deleteById(id);
 		PrintWriter out= response.getWriter();
+		int flag=new WasherDao().deleteById(id);
 		if(flag==1) {
 			out.write("yes");
 		}else {
@@ -98,7 +98,7 @@ public class AdminServlet extends HttpServlet {
 		}
 	}
 	
-	//新增跳转
+	/** 跳转至新增界面 */
 	public void toAddWasher(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("WEB-INF/page/admin/washerAdd.jsp").forward(request, response);
 	}
@@ -106,13 +106,11 @@ public class AdminServlet extends HttpServlet {
 	//新增数据
 	public void washerAdd(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("UTF-8");
-		String status=request.getParameter("status");
 		Washer washer=new Washer();
-		
-		washer.setStatus(status);
-		
+		washer.setName(request.getParameter("name"));
+		washer.setLocation(request.getParameter("location"));
 		WasherDao washerDao=new WasherDao();
-		int result=washerDao.insertWasher(washer);
+		int result=washerDao.insert(washer);
 		if(result>0) {
 			response.sendRedirect("washerList.adminServlet");
 		}else {
@@ -127,26 +125,26 @@ public class AdminServlet extends HttpServlet {
 		Washer washer=new WasherDao().queryWasherInfoById(Integer.parseInt(id));
 		request.setAttribute("washer", washer);
 		request.getRequestDispatcher("/WEB-INF/page/admin/washerUpdate.jsp").forward(request, response);
-		//request.getRequestDispatcher("/WEB-INF/page/washerAdd.jsp").forward(request, response);
 	}
 	
 	/** 保存修改的洗衣机数据 */
 	public void updateWasherById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		//获取到参数
 		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		String id =request.getParameter("id");
-		String status=	request.getParameter("status");
+		String name=request.getParameter("name");
+		String location=request.getParameter("location");
 		
 		Washer washer=new Washer();
 		washer.setId(id);
-		washer.setStatus(status);
 		int result=0;
-		result = new WasherDao().updateById(status, id);
+		result = new WasherDao().updateById(id,name,location);
 		if(result>0){
 			//重定向   在此sevlet方法中调用另外一个方法
 			response.sendRedirect("washerList.adminServlet");
 		}else{
-			response.getWriter().write("系统异常,保存数据失败,3秒后跳转回修改页面");
+			response.getWriter().write("系统异常,保存数据失败,3秒后跳转回修改页面"+result);
 			response.setHeader("refresh", "3;url=washerList.adminServlet");
 		}
 	}

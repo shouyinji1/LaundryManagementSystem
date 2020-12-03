@@ -6,7 +6,9 @@ public class Washer implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String id;
-	private String status;
+	private String name;
+	private String location;
+	private String userID;
 
 	public String getId() {
 		return id;
@@ -14,10 +16,22 @@ public class Washer implements Serializable{
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getStatus() {
-		return status;
+	public String getName() {
+		return name;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String getUserID() {
+		return userID;
+	}
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 }

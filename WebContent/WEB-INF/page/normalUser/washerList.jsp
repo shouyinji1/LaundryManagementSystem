@@ -38,8 +38,8 @@
                   <tr>
                     <td>No.</td>
 					<td>洗衣机编号</td>
-					<td>使用状态</td>
-					<td>操作</td>
+					<td>洗衣机名称</td>
+					<td>位置</td>
                   </tr>
                 </thead>
                 <tbody>
@@ -49,10 +49,17 @@
 					<tr>
 						<td>${status.count}</td>
 						<td>${washer.id}</td>
-						<td>${washer.status}</td>
+						<td>${washer.name}</td>
+						<td>${washer.location}</td>
 						<td>
-							<button class="btn btn-success" type="button" onclick="window.location.href='updateWasher.do?id='+${washer.id}">选择</button>
-							<button class="btn btn-danger" type="button" onclick="deleteById(${washer.id})">退选</button>
+							<c:choose>
+								<c:when test="${washer.userID==user.id}" >
+									<button class="btn btn-danger" type="button" onclick="withdrawOrderByWasherID(${washer.id})">退选</button>
+								</c:when>
+								<c:otherwise>
+									<button class="btn btn-success" type="button" onclick="window.location.href='chooseWasher.normalUserServlet?id='+${washer.id}">选择</button>
+								</c:otherwise>
+							</c:choose>
 						</td>
 					</tr>	
 				</c:forEach>

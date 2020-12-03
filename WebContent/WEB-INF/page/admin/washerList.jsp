@@ -41,8 +41,9 @@
                   <tr>
                     <td>No.</td>
 					<td>洗衣机编号</td>
-					<td>使用状态</td>
-					<td>操作</td>
+					<td>洗衣机名称</td>
+					<td>位置</td>
+					<td>使用者编号</td>
                   </tr>
                 </thead>
                 <tbody>
@@ -52,10 +53,14 @@
 					<tr>
 						<td>${status.count}</td>
 						<td>${washer.id}</td>
-						<td>${washer.status}</td>
+						<td>${washer.name}</td>
+						<td>${washer.location}</td>
+						<td>${washer.userID}</td>
 						<td>
 							<button class="btn btn-success" type="button" onclick="window.location.href='updateWasher.adminServlet?id='+${washer.id}">修改</button>
-							<button class="btn btn-danger" type="button" onclick="deleteById(${washer.id})">删除</button>
+							<c:if test="${empty washer.userID}">
+								<button class="btn btn-danger" type="button" onclick="deleteById(${washer.id})">删除</button>
+							</c:if>
 						</td>
 					</tr>	
 				</c:forEach>

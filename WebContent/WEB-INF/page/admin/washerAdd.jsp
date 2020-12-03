@@ -31,13 +31,18 @@
             <h3 class="tile-title">添加</h3>
             <div class="tile-body">
               <div class="form-horizontal">
-                 <div class="form-group row">
-					<label class="control-label col-md-3">使用状态：</label>
-					<span class="radio">
-						<input type="radio" name="status" value="未使用" checked="checked" /><span>未使用</span>
-						<input type="radio" name="status" value="使用中" /><span>使用中</span>
-					</span>
-                 </div>
+				<div class="form-group row">
+					<label class="control-label col-md-3">设备名称</label>
+					<div class="col-md-8">
+						<input name="name" id="name" class="form-control" type="text" placeholder="请输入类型名称">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-md-3">设备位置</label>
+					<div class="col-md-8">
+						<input name="location" id="location" class="form-control" type="text" placeholder="请输入类型名称">
+					</div>
+				</div>
               </div>
             </div>
             <div class="tile-footer">

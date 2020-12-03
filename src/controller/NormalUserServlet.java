@@ -2,6 +2,9 @@ package controller;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.OrderDao;
+import dao.PriceDao;
+import dao.UserDao;
+import dao.WasherDao;
 import entity.Page;
+import entity.Price;
+import entity.User;
 import entity.Washer;
 import service.WasherService;
 
@@ -61,6 +70,7 @@ public class NormalUserServlet extends HttpServlet {
 	
 	/** 分页查询洗衣机信息 */
 	protected void washerList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User user=(User)request.getSession().getAttribute("user");
 		// 获取分页对象
 		Page<Washer> page = (Page<Washer>)request.getAttribute("page");
 		//判断是否是第一次请求
@@ -77,9 +87,53 @@ public class NormalUserServlet extends HttpServlet {
 		}
 
 		// 去数据库查询类型管理表，获取数据
-		page = washerService.getWasherPage(page);
+		page = washerService.getWasherPage(page,user.getId());
 		// 将数据返回给页面
 		request.setAttribute("page", page);
 		request.getRequestDispatcher("/WEB-INF/page/normalUser/washerList.jsp").forward(request, response);
+	}
+	
+	/** 撤销选择洗衣机 */
+	protected void withdrawOrderByWasherID(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User user=(User)request.getSession().getAttribute("user");
+		String washerID=request.getParameter("id");
+		int flag=new OrderDao().deleteByWasherID(washerID);
+		if(flag==1) {
+			response.getWriter().write("yes");
+		}else {
+			response.getWriter().write("no");
+		}
+	}
+	
+	/** 选择洗衣机 */
+	protected void chooseWasher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id=	request.getParameter("id");
+		Washer washer=new WasherDao().queryWasherInfoById(Integer.parseInt(id));
+		request.setAttribute("washer", washer);
+		ArrayList<Price> prices=new PriceDao().queryAll();
+		request.setAttribute("prices", prices);
+		request.getRequestDispatcher("/WEB-INF/page/normalUser/orderCreate.jsp").forward(request, response);
+	}
+	
+	/** 创建订单 */
+	protected void createOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		String userID=request.getParameter("userID");
+		String washerID=request.getParameter("washerID");
+		String mode=request.getParameter("mode");
+
+        SimpleDateFormat sdf = new SimpleDateFormat();// 格式化时间 
+        sdf.applyPattern("yyyy-MM-dd HH:mm:ss");
+        String date=sdf.format(new Date());	//获取当前时间
+        
+        int flag=new OrderDao().insert(userID, washerID, mode, date);
+		if(flag==1){
+			//重定向   在此sevlet方法中调用另外一个方法
+			response.sendRedirect("washerList.normalUserServlet");
+		}else{
+			response.getWriter().write("系统异常,保存数据失败,3秒后跳转回修改页面"+flag);
+			response.setHeader("refresh", "3;url=washerList.normalUserServlet");
+		}
 	}
 }

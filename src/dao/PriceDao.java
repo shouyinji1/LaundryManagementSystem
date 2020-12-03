@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -68,6 +69,36 @@ public class PriceDao {
 		return flag;
 	}
 	
+	/** 查询所有价目信息 */
+	public ArrayList<Price> queryAll(){
+		Connection conn = DBUtils.getConnection();
+		Price price=null;
+		ArrayList<Price> results=new ArrayList<Price>();
+		String sql = "select * from Price;";
+		try {
+			//获取PreparedStatement对象
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			//对sql参数进行动态赋值
+			ResultSet rs = ps.executeQuery();//查询结果集
+			
+			while(rs.next()){	
+				price=new Price();
+				price.setMode(rs.getString("mode"));
+				price.setPrice(rs.getString("price"));
+				price.setDuration(rs.getString("duration"));
+				results.add(price);
+			}
+			//释放资源
+			rs.close();
+			ps.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBUtils.closeConnection(conn);
+		}
+		return results;
+	}
+
 	/** 分页查询 */
 	public ArrayList<Price> querySplitedList(int curPage,int pageSize){
 		return null;
