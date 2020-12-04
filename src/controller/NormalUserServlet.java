@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.OrderDao;
 import dao.PriceDao;
-import dao.UserDao;
 import dao.WasherDao;
 import entity.Page;
 import entity.Price;
@@ -95,7 +94,6 @@ public class NormalUserServlet extends HttpServlet {
 	
 	/** 撤销选择洗衣机 */
 	protected void withdrawOrderByWasherID(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User user=(User)request.getSession().getAttribute("user");
 		String washerID=request.getParameter("id");
 		int flag=new OrderDao().deleteByWasherID(washerID);
 		if(flag==1) {

@@ -89,7 +89,6 @@
 		
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div class="container">
-				  <!-- <iframe class="embed-responsive-item" src="washerListServlet.do" scrolling="no"></iframe>-->
 				  <iframe class="embed-responsive-item" src="${dashboardInfo.iframe_src}" onload="this.height=this.contentWindow.document.body.scrollHeight" width="100%" scrolling="no" frameborder="0"></iframe>
 				</div>
 			</main>

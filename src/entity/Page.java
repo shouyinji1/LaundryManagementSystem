@@ -12,7 +12,7 @@ public class Page<T> implements Serializable{
 	/** 
 	* 分页数据 
 	*/ 
-	private List data = null; 
+	private List<T> data = null; 
 	/** 
 	* 当前页 
 	*/ 
@@ -42,7 +42,7 @@ public class Page<T> implements Serializable{
 		this.pageSize = pageSize;
 	}
 
-	public Page(List data, int curPage, int rowsCount,int pageSize) { 
+	public Page(List<T> data, int curPage, int rowsCount,int pageSize) { 
 		this.data = data; 
 		this.curPage = curPage; 
 		this.rowsCount = rowsCount; 
@@ -50,13 +50,13 @@ public class Page<T> implements Serializable{
 		this.pageCount = (((int) Math.ceil((double) rowsCount / pageSize))==0 ? 1 : ((int) Math.ceil((double) rowsCount / pageSize))); 
 	} 
 	
-	public void setParam(List data, int rowsCount){
+	public void setParam(List<T> data, int rowsCount){
 		this.data = data; 
 		this.rowsCount = rowsCount; 
 		this.pageCount = (((int) Math.ceil((double) rowsCount / pageSize))==0 ? 1 : ((int) Math.ceil((double) rowsCount / pageSize))); 
 	}
 
-	public void setParam(List data, int curPage, int rowsCount){
+	public void setParam(List<T> data, int curPage, int rowsCount){
 		this.data = data; 
 		this.curPage = curPage; 
 		this.rowsCount = rowsCount; 
@@ -170,10 +170,10 @@ public class Page<T> implements Serializable{
 	* @return Collection 
 	*/ 
 
-	public List getData() {
+	public List<T> getData() {
 		return data;
 	}
-	public void setData(List data) {
+	public void setData(List<T> data) {
 		this.data = data;
 	}
 	
@@ -228,8 +228,6 @@ public class Page<T> implements Serializable{
 			}
 			sb.append("</ul></div></div></div></form>"); 
 		}
-		
 		return sb.toString(); 
 	}
-	
 }

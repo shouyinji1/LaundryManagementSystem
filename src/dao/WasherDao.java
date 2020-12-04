@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
-import entity.Page;
 import entity.Washer;
 import utils.DBUtils;
 

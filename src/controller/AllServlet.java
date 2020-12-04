@@ -3,10 +3,6 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,15 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.ErrorMessages;
-
 import dao.UserDao;
-import dao.WasherDao;
 import entity.Dashboard;
-import entity.Page;
 import entity.User;
-import entity.Washer;
-import service.WasherService;
 
 /**
  * Servlet implementation class AllServlet

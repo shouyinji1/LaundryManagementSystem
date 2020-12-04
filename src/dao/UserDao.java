@@ -5,7 +5,6 @@ import java.sql.SQLException;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import com.sun.tools.doclint.Checker.Flag;
 
 import entity.User;
 import utils.DBUtils;

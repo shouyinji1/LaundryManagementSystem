@@ -41,6 +41,4 @@ public class PageTag extends SimpleTagSupport{
 	public void setAction(String action) {
 		this.action = action;
 	}
-	
-	
 }
