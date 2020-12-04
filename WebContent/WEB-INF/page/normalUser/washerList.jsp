@@ -39,7 +39,8 @@
                     <td>No.</td>
 					<td>洗衣机编号</td>
 					<td>洗衣机名称</td>
-					<td>位置</td>
+					<td>洗衣机位置</td>
+					<td>操作</td>
                   </tr>
                 </thead>
                 <tbody>

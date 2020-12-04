@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="en">
 	<head>
@@ -55,74 +56,33 @@
 			  <div class="sidebar-sticky pt-3">
 				<ul class="nav flex-column">
 				  <li class="nav-item">
-					<a class="nav-link active" href="#">
+					<a class="nav-link active" href="#" id="menu1">
 					  <span data-feather="home"></span>
-					  洗衣机列表<span class="sr-only">(current)</span>
+					  ${dashboardInfo.menu1}<span class="sr-only">(current)</span>
 					</a>
 				  </li>
 				  <li class="nav-item">
-					<a class="nav-link" href="#">
+					<a class="nav-link" href="#" id="menu2">
 					  <span data-feather="file"></span>
-					  Orders
+					  ${dashboardInfo.menu2}
 					</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link" href="#">
-					  <span data-feather="shopping-cart"></span>
-					  Products
-					</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link" href="#">
-					  <span data-feather="users"></span>
-					  Customers
-					</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link" href="#">
-					  <span data-feather="bar-chart-2"></span>
-					  Reports
-					</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link" href="#">
-					  <span data-feather="layers"></span>
-					  Integrations
-					</a>
-				  </li>
-				</ul>
-		
-				<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-				  <span>Saved reports</span>
-				  <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-					<span data-feather="plus-circle"></span>
-				  </a>
-				</h6>
-				<ul class="nav flex-column mb-2">
-				  <li class="nav-item">
-					<a class="nav-link" href="#">
-					  <span data-feather="file-text"></span>
-					  Current month
-					</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link" href="#">
-					  <span data-feather="file-text"></span>
-					  Last quarter
-					</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link" href="#">
-					  <span data-feather="file-text"></span>
-					  Social engagement
-					</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link" href="#">
-					  <span data-feather="file-text"></span>
-					  Year-end sale
-					</a>
-				  </li>
+					</li>
+				  <c:if test="${not empty dashboardInfo.menu3 && !(dashboardInfo.menu3 eq null)}">
+					  <li class="nav-item">
+						<a class="nav-link" href="#" id="menu3">
+							<span data-feather="users"></span>
+						  ${dashboardInfo.menu3}
+						</a>
+					  </li>
+				  </c:if>
+				  <c:if test="${not empty dashboardInfo.menu4 && !(dashboardInfo.menu4 eq null)}">
+					  <li class="nav-item">
+						<a class="nav-link" href="#" id="menu4">
+						  <span data-feather="shopping-cart"></span>
+						  ${dashboardInfo.menu4}
+						</a>
+					  </li>
+				  </c:if>
 				</ul>
 			  </div>
 			</nav>
@@ -231,6 +191,23 @@
 					}
 				}
 			}
+		</script>
+		<script type="text/javascript">
+			$(function(){	//iframe跳转
+				//匿名函数   没有名字的方法
+				$("#menu1").click(function(){
+					document.getElementsByClassName("embed-responsive-item")[0].src="${dashboardInfo.link1}";
+				});
+				$("#menu2").click(function(){
+					document.getElementsByClassName("embed-responsive-item")[0].src="${dashboardInfo.link2}";
+				});
+				$("#menu3").click(function(){
+					document.getElementsByClassName("embed-responsive-item")[0].src="${dashboardInfo.link3}";
+				});
+				$("#menu4").click(function(){
+					document.getElementsByClassName("embed-responsive-item")[0].src="${dashboardInfo.link4}";
+				});
+			}) 
 		</script>
     </body>
 </html>
