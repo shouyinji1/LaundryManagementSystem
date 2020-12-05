@@ -102,7 +102,7 @@ public class Dashboard implements Serializable{
 		this.menu3=null;
 		this.menu4=null;
 		this.link1="washerList.normalUserServlet";
-		this.link2="washerList.normalUserServlet";
+		this.link2="myOrders.normalUserServlet";
 		this.link3=null;
 		this.link4=null;
 	}

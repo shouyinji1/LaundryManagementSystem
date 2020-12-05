@@ -47,9 +47,27 @@ function withdrawOrderByWasherID(id){
 	});
 }
 
-function addWasher(){
-	window.location.href="toAddWasher.adminServlet";
+function updateOrder(id){
+	window.location.href="toUpdateOrder.normalUserServlet?id="+id;
 }
-function updateWasher(){
-	window.location.href="updateWasher.adminServlet?id="+id;
+
+//删除订单
+function deleteOrderByID(id){
+	$.ajax({
+		type: "post",//方法类型
+		url: "deleteOrderByID.normalUserServlet" ,
+		dataType:"text",
+		async:true,
+		data: {'id':id},
+		success: function (data) {
+			if (data=="no") {
+				alert("删除失败！")
+	 		}else{
+	 			location.reload();
+			}
+		},
+		error : function() {
+			alert("异常请求！"+data.msg);
+		}
+	});
 }

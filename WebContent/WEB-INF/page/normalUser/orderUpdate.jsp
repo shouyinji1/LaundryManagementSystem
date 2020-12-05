@@ -18,19 +18,25 @@
 <body>
       <div class="app-title">
         <div>
-          <p>创建订单</p>
+          <p>修改订单</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item active"><a href="#">创建订单</a></li>
+          <li class="breadcrumb-item active"><a href="#">修改订单</a></li>
         </ul>
       </div>
       <div class="col-md-6">
-      	<form action="createOrder.normalUserServlet" method="post" id="myform">
+      	<form action="updateOrder.normalUserServlet" method="post" id="myform">
           <div class="tile">
-            <h3 class="tile-title">创建订单</h3>
+            <h3 class="tile-title">修改订单</h3>
             <div class="tile-body">
               <div class="form-horizontal">
+                <div class="form-group row">
+                  <label class="control-label col-md-3">订单ID：</label>
+                  <div class="col-md-8">
+                  	<input name="orderID" id="orderID" class="form-control" value="${order.id}" readonly="readonly"> 
+                  </div>
+                </div>
                 <div class="form-group row">
                   <label class="control-label col-md-3">用户ID：</label>
                   <div class="col-md-8">
@@ -50,7 +56,7 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="control-label col-md-3">设备ID：</label>
+                  <label class="control-label col-md-3">洗衣机：</label>
                   <div class="col-md-8">
                   	<input name="washerID" id="washerID" class="form-control" value="${washer.id}" readonly="readonly"> 
                   </div>
@@ -72,7 +78,14 @@
 					<div class="col-md-8">
 						<select class="form-control" id="mode" name="mode">
 							<c:forEach items="${prices}" var="price">
-								<option value="${price.mode}">${price.mode}：${price.price}元，时长${price.duration}分钟</option>
+								<c:choose>
+									<c:when test="${price.mode == order.mode}">
+										<option selected="selected" value="${price.mode}">${price.mode}：${price.price}元，时长${price.duration}分钟</option>
+									</c:when>
+									<c:otherwise>
+										<option value="${price.mode}">${price.mode}：${price.price}元，时长${price.duration}分钟</option>
+									</c:otherwise>
+								</c:choose>
 							</c:forEach>
 						</select>
 					</div>
@@ -83,7 +96,7 @@
               <div class="row">
                 <div class="col-md-8 col-md-offset-3">
                   <button class="btn btn-primary" type="button" id="submitBtn">提交</button>
-                  <button class="btn btn-primary" type="button" onclick="javascript:window.location.href='washerList.normalUserServlet'" id="retBtn">返回</button>
+                  <button class="btn btn-primary" type="button" onclick="javascript:window.location.href='myOrders.normalUserServlet'" id="retBtn">返回</button>
                 </div>
               </div>
             </div>

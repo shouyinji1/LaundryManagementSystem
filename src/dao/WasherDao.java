@@ -100,15 +100,15 @@ public class WasherDao {
 	}
 	
 	/** 根据ID查询某洗衣机信息 */
-	public Washer queryWasherInfoById(int id){
+	public Washer queryWasherInfoById(String id){
 		String sql="select * from Washer where id=?";
 		Connection conn=DBUtils.getConnection();
 		Washer washer=new Washer();
 		try {
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-			ps.setString(1, Integer.toString(id));
+			ps.setString(1, id);
 			ResultSet rs=ps.executeQuery();
-			while(rs.next()) {
+			if(rs.next()) {
 				washer.setId(rs.getString("id"));
 				washer.setName(rs.getString("name"));
 				washer.setLocation(rs.getString("location"));

@@ -18,13 +18,13 @@ import entity.User;
  * Servlet implementation class AllServlet
  */
 @WebServlet("*.do")
-public class AllServlet extends HttpServlet {
+public class DoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AllServlet() {
+    public DoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

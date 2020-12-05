@@ -122,7 +122,7 @@ public class AdminServlet extends HttpServlet {
 	//更新页面跳转
 	public void updateWasher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String  id=	request.getParameter("id");
-		Washer washer=new WasherDao().queryWasherInfoById(Integer.parseInt(id));
+		Washer washer=new WasherDao().queryWasherInfoById(id);
 		request.setAttribute("washer", washer);
 		request.getRequestDispatcher("/WEB-INF/page/admin/washerUpdate.jsp").forward(request, response);
 	}
