@@ -68,6 +68,24 @@ public class OrderDao {
 		return flag;
 	}
 	
+	/** 根据洗衣模式删除订单记录 */
+	public int deleteByMode(String mode) {
+		Connection conn = DBUtils.getConnection();
+		String sql = "delete from `Order` where mode=?;";
+		int flag = 0;
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ps.setString(1, mode);
+			flag = ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.closeConnection(conn);
+		}
+		return flag;
+	}
+
 	/** 修改记录 */
 	public int update(String id,String mode) {
 		Connection conn = DBUtils.getConnection();

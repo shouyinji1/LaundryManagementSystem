@@ -52,13 +52,13 @@ public class PriceDao {
 	/** 更新记录 */
 	public int update(String mode,String price,String duration) {
 		Connection conn = DBUtils.getConnection();
-		String sql = "update Price set mode=?,price=?,duration=?;";
+		String sql = "update Price set price=?,duration=? where mode=?;";
 		int flag = 0;
 		try {
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-			ps.setString(1, mode);
-			ps.setString(2, price);
-			ps.setString(3, duration);
+			ps.setString(1, price);
+			ps.setString(2, duration);
+			ps.setString(3, mode);
 			flag = ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
@@ -101,6 +101,71 @@ public class PriceDao {
 
 	/** 分页查询 */
 	public ArrayList<Price> querySplitedList(int curPage,int pageSize){
-		return null;
+		Connection conn=DBUtils.getConnection();
+		String sql="select * from Price order by mode asc limit "+curPage+","+pageSize+";";
+		ArrayList<Price> results=new ArrayList<Price>();
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				Price price=new Price();
+				price.setMode(rs.getString("mode"));
+				price.setPrice(rs.getString("price"));
+				price.setDuration(rs.getString("duration"));
+				results.add(price);
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.closeConnection(conn);
+		}
+		return results;
+	}
+	
+	/** 查询价目总记录数 */
+	public int queryInfosCount() {
+		String sql="select count(mode) from Price";
+		Connection conn=DBUtils.getConnection();
+		int count=0;
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				count=Integer.parseInt(rs.getString("count(mode)"));
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.closeConnection(conn);
+		}
+		return count;
+	}
+
+	/** 查询某种洗衣模式的价目信息 */
+	public Price queryPrice(String mode) {
+		String sql="select * from Price where mode=?";
+		Connection conn=DBUtils.getConnection();
+		Price price=new Price();
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ps.setString(1, mode);
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()) {
+				price.setMode(rs.getString("Mode"));
+				price.setPrice(rs.getString("price"));
+				price.setDuration(rs.getString("duration"));
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.closeConnection(conn);
+		}
+		return price;
 	}
 }

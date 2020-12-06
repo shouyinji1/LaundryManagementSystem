@@ -11,13 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.OrderDao;
+import dao.PriceDao;
 import dao.UserDao;
 import dao.WasherDao;
 import entity.Order;
 import entity.Page;
+import entity.Price;
 import entity.User;
 import entity.Washer;
 import service.OrderService;
+import service.PriceService;
 import service.UserService;
 import service.WasherService;
 
@@ -31,6 +34,7 @@ public class AdminServlet extends HttpServlet {
 	WasherService washerService=new WasherService();
 	OrderService orderService=new OrderService();
 	UserService userService=new UserService();
+	PriceService priceService=new PriceService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -111,7 +115,7 @@ public class AdminServlet extends HttpServlet {
 		request.getRequestDispatcher("WEB-INF/page/admin/washerAdd.jsp").forward(request, response);
 	}
 	
-	//新增数据
+	/** 新增洗衣机数据 */
 	public void washerAdd(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("UTF-8");
 		Washer washer=new Washer();
@@ -127,7 +131,7 @@ public class AdminServlet extends HttpServlet {
 		}
 	}
 	
-	//更新页面跳转
+	/** 更新洗衣机页面跳转 */
 	public void updateWasher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String  id=	request.getParameter("id");
 		Washer washer=new WasherDao().queryWasherInfoById(id);
@@ -229,6 +233,96 @@ public class AdminServlet extends HttpServlet {
 			response.getWriter().write("yes");
 		}else {
 			response.getWriter().write("no");
+		}
+	}
+	
+	
+	/****************** 价目管理Servlet *************************/
+	
+	/** 所有价目 */
+	public void priceList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		// 获取分页对象
+		Page<Price> page = (Page<Price>)request.getAttribute("page");
+		//判断是否是第一次请求
+		if (page == null) {
+			page = new Page<Price>(5);// 参数为每页显示数量
+		}
+		// 获取当前要查的页码
+		String curPageStr = request.getParameter("curPage");
+		if (curPageStr != null) {
+			//如果不是第一次进入,将页面传过来的页码赋值给初始的第一页
+			page.setCurPage(Integer.parseInt(curPageStr));
+		}else {
+			page.setCurPage(1);	//第一次进入的时候，默认为第一页
+		}
+		// 去数据库查询类型管理表，获取数据
+		page = priceService.getPricePage(page);
+		// 将数据返回给页面
+		request.setAttribute("page", page);
+		request.getRequestDispatcher("/WEB-INF/page/admin/priceList.jsp").forward(request, response);
+	}
+	
+	/** 删除价目 */
+	protected void deletePriceByMode(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		String mode=request.getParameter("mode");
+		int flag=new PriceDao().deleteByMode(mode);
+		if(flag==1) {
+			response.getWriter().write("yes");
+		}else {
+			response.getWriter().write("no");
+		}
+	}
+
+	/** 跳转至修改价目界面 */
+	public void toUpdatePrice(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		request.getParameter("UTF-8");
+		Price price=new PriceDao().queryPrice(request.getParameter("mode"));
+		request.setAttribute("price", price);
+		request.getRequestDispatcher("WEB-INF/page/admin/priceUpdate.jsp").forward(request, response);
+	}
+	/** 跳转至添加价目界面 */
+	public void toAddPrice(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("WEB-INF/page/admin/priceAdd.jsp").forward(request, response);
+	}
+	
+	/** 修改价目数据 */
+	public void updatePrice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		//获取到参数
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		String mode=request.getParameter("mode");
+		String price=request.getParameter("price");
+		String duration=request.getParameter("duration");
+		int result=new PriceDao().update(mode, price, duration);
+		if(result>0){
+			result=new OrderDao().deleteByMode(mode);
+			if(result==0){
+				response.getWriter().write("系统异常,更新订单数据失败,3秒后跳转回修改页面"+result);
+				response.setHeader("refresh", "3;url=priceList.adminServlet");
+			}else {
+				//重定向   在此sevlet方法中调用另外一个方法
+				response.sendRedirect("washerList.adminServlet");
+			}
+		}else{
+			response.getWriter().write("系统异常,保存数据失败,3秒后跳转回修改页面"+result);
+			response.setHeader("refresh", "3;url=priceList.adminServlet");
+		}
+	}
+
+	/** 添加价目 */
+	public void addPrice(HttpServletRequest request,HttpServletResponse response) throws IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		String mode=request.getParameter("mode");
+		String price=request.getParameter("price");
+		String duration=request.getParameter("duration");
+		int result=new PriceDao().insert(mode, price, duration);
+		if(result>0) {
+			response.sendRedirect("priceList.adminServlet");
+		}else {
+			response.getWriter().write("系统异常，新增数据失败，3秒后跳回页面");
+			response.setHeader("refresh", "3;priceList.adminServlet");
 		}
 	}
 }

@@ -96,3 +96,27 @@ function deleteUserByID(id){
 		}
 	});
 }
+
+//删除价目
+function deletePriceByMode(mode){
+	$.ajax({
+		type: "post",//方法类型
+		url: "deletePriceByMode.adminServlet" ,
+		dataType:"text",
+		async:true,
+		data: {'mode':mode},
+		success: function (data) {
+			if (data=="no") {
+				alert("删除失败！")
+	 		}else{
+	 			location.reload();
+			}
+		},
+		error : function() {
+			alert("异常请求！"+data.msg);
+		}
+	});
+}
+function addPrice(){
+	window.location.href="toAddPrice.adminServlet";
+}
