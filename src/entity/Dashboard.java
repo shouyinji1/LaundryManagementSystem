@@ -114,8 +114,8 @@ public class Dashboard implements Serializable{
 		this.menu3="用户管理";
 		this.menu4="价目管理";
 		this.link1="washerList.adminServlet";
-		this.link2="washerList.adminServlet";
-		this.link3="washerList.adminServlet";
-		this.link4="washerList.adminServlet";
+		this.link2="orderList.adminServlet";
+		this.link3="userList.adminServlet";
+		this.link4="priceList.adminServlet";
 	}
 }

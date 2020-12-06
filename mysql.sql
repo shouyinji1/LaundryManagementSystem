@@ -36,9 +36,9 @@ create table `Order`(
 	WasherID INT NOT NULL UNIQUE comment '洗衣机ID',
 	Mode NCHAR(10) NOT NULL comment '洗衣模式',
 	GeneratedTime DATETIME NOT NULL comment '订单生成时间',
-	FOREIGN KEY(UserID) REFERENCES User(ID),
-	FOREIGN KEY(WasherID) REFERENCES Washer(ID),
-	FOREIGN KEY(Mode) REFERENCES Price(Mode)
+	FOREIGN KEY(UserID) REFERENCES User(ID) ON DELETE CASCADE,
+	FOREIGN KEY(WasherID) REFERENCES Washer(ID) ON DELETE CASCADE,
+	FOREIGN KEY(Mode) REFERENCES Price(Mode) ON DELETE CASCADE
 ) CHARSET=utf8 comment '订单信息表';
 
 
@@ -93,9 +93,7 @@ select ID,name,location,UserID from (
 	left outer join `Order` on Washer.ID=`Order`.washerID
 )temp where UserID is null or UserID='' or UserID=3 order by ID asc limit 0,10;
 
-select Washer.ID,name,location from Washer,`Order`
-	where Washer.ID != `Order`.washerID or (Washer.ID=`Order`.washerID and `Order`.UserID=3)
-	order by Washer.ID asc limit 1,5;
+
 	
 -- 查看表结构
 desc 表名;

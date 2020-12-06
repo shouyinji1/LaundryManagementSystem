@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -134,5 +135,73 @@ public class UserDao {
 			DBUtils.closeConnection(conn);
 		}
 		return flag;
+	}
+	
+	/** 删除用户 */
+	public int deleteByID(String id) {
+		Connection conn = DBUtils.getConnection();
+		String sql = "delete User,`Order` from User,`Order` where User.ID=`Order`.UserID and User.ID=?;";
+		int flag=0;
+		try {
+			//获取PreparedStatement对象
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			//对sql参数进行动态赋值
+			ps.setString(1, id);
+			flag = ps.executeUpdate();
+			ps.close();	//释放资源
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtils.closeConnection(conn);
+		}
+		return flag;
+	}
+
+	/** 分页查询所有普通用户 */
+	public ArrayList<User> querySplitedListOfNormalUser(int curPage,int pageSize){
+		Connection conn=DBUtils.getConnection();
+		String sql="select * from User where level='user' order by ID asc limit "+curPage+","+pageSize+";";
+		ArrayList<User> results=new ArrayList<User>();
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				User user=new User();
+				user.setId(rs.getString("ID"));
+				user.setName(rs.getString("name"));
+				user.setPassword(rs.getString("password"));
+				user.setLevel(rs.getString("level"));
+				user.setTel(rs.getString("tel"));
+				results.add(user);
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.closeConnection(conn);
+		}
+		return results;
+	}
+
+	//查询普通用户总记录数
+	public int queryInfosCountOfNormalUser() {
+		String sql="select count(id) from User where level='user'";
+		Connection conn=DBUtils.getConnection();
+		int count=0;
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				count=Integer.parseInt(rs.getString("count(id)"));
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.closeConnection(conn);
+		}
+		return count;
 	}
 }

@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>洗衣机管理</title>
+	<title>订单列表</title>
 	<!-- <link href="bootstrap-4.5.3-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
 	<link href="css/main.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
@@ -21,18 +21,15 @@
 <body>
 	<div class="app-title">
 		<div>
-		  <h2>洗衣机列表</h2>
+		  <h2>订单列表</h2>
 		</div>
 		<ul class="app-breadcrumb breadcrumb side">
 			<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-			<li class="breadcrumb-item">洗衣机管理</li>
-			<!--   <li class="breadcrumb-item active"><a href="#">类型管理</a></li> -->
+			<li class="breadcrumb-item">订单管理</li>
+			<li class="breadcrumb-item active"><a href="#">类型管理</a></li>
 		</ul>
       </div>
       <div class="row">
-      	<div class="col-md-12">
-      		<button class="btn btn-primary" type="button" onclick="addWasher()">添加</button>
-      	</div>
         <div class="col-md-12">
           <div class="tile">
             <div class="tile-body">
@@ -40,34 +37,32 @@
                 <thead>
                   <tr>
                     <td>No.</td>
-					<td>洗衣机编号</td>
-					<td>洗衣机名称</td>
-					<td>洗衣机位置</td>
-					<td>使用者编号</td>
-					<td>操作</td>
+					<td>订单ID</td>
+					<td>使用者ID</td>
+					<td>洗衣机ID</td>
+					<td>洗衣模式</td>
+					<td>订单生成时间</td>
                   </tr>
                 </thead>
                 <tbody>
                 <!-- el表达式-->
                 <!-- varStatus  var的下标序号 -->
-                <c:forEach items="${page.data}" var="washer" varStatus="status">
+                <c:forEach items="${page.data}" var="order" varStatus="status">
 					<tr>
 						<td>${status.count}</td>
-						<td>${washer.id}</td>
-						<td>${washer.name}</td>
-						<td>${washer.location}</td>
-						<td>${washer.userID}</td>
+						<td>${order.id}</td>
+						<td>${order.userID}</td>
+						<td>${order.washerID}</td>
+						<td>${order.mode}</td>
+						<td>${order.generatedTime}</td>
 						<td>
-							<button class="btn btn-success" type="button" onclick="window.location.href='updateWasher.adminServlet?id='+${washer.id}">修改</button>
-							<c:if test="${empty washer.userID}">
-								<button class="btn btn-danger" type="button" onclick="deleteById(${washer.id})">删除</button>
-							</c:if>
+							<button class="btn btn-danger" type="button" onclick="deleteOrderByID(${order.id})">删除</button>
 						</td>
 					</tr>	
 				</c:forEach>
                 </tbody>
               </table>
-              <p:page action="washerList.adminServlet" />
+              <p:page action="orderList.adminServlet" />
             </div>
           </div>
         </div>

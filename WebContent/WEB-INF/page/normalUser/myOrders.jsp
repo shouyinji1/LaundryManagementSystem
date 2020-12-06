@@ -54,8 +54,8 @@
 						<td>${order.mode}</td>
 						<td>${order.generatedTime}</td>
 						<td>
-							<button class="btn btn-danger" type="button" onclick="updateOrder(${order.id})">修改</button>
-							<button class="btn btn-success" type="button" onclick="deleteOrderByID(${order.id})">退选</button>
+							<button class="btn btn-success" type="button" onclick="updateOrder(${order.id})">修改</button>
+							<button class="btn btn-danger" type="button" onclick="deleteOrderByID(${order.id})">退选</button>
 						</td>
 					</tr>	
 				</c:forEach>
