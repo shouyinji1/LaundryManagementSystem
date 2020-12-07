@@ -22,6 +22,7 @@ import entity.Washer;
 import service.OrderService;
 import service.PriceService;
 import service.UserService;
+import service.ValidityService;
 import service.WasherService;
 
 /**
@@ -294,19 +295,20 @@ public class AdminServlet extends HttpServlet {
 		String mode=request.getParameter("mode");
 		String price=request.getParameter("price");
 		String duration=request.getParameter("duration");
-		int result=new PriceDao().update(mode, price, duration);
-		if(result>0){
-			result=new OrderDao().deleteByMode(mode);
-			if(result==0){
-				response.getWriter().write("系统异常,更新订单数据失败,3秒后跳转回修改页面"+result);
-				response.setHeader("refresh", "3;url=priceList.adminServlet");
+		PriceDao priceDao=new PriceDao();
+		if(ValidityService.isValidPrice(price)) {
+			if(ValidityService.isValidDuration(duration)) {
+				int result=priceDao.update(mode, price, duration);
+				if(result>0) {
+					response.getWriter().write("yes");
+				}else {
+					response.getWriter().write("no");
+				}
 			}else {
-				//重定向   在此sevlet方法中调用另外一个方法
-				response.sendRedirect("washerList.adminServlet");
+				response.getWriter().write("invalid-duration");
 			}
-		}else{
-			response.getWriter().write("系统异常,保存数据失败,3秒后跳转回修改页面"+result);
-			response.setHeader("refresh", "3;url=priceList.adminServlet");
+		}else {
+			response.getWriter().write("invalid-price");
 		}
 	}
 
@@ -318,15 +320,23 @@ public class AdminServlet extends HttpServlet {
 		String price=request.getParameter("price");
 		String duration=request.getParameter("duration");
 		PriceDao priceDao=new PriceDao();
-		if(priceDao.priceIsExist(mode)==false) {
-			int result=priceDao.insert(mode, price, duration);
-			if(result>0) {
-				response.getWriter().write("yes");
+		if(ValidityService.isValidPrice(price)) {
+			if(ValidityService.isValidDuration(duration)) {
+				if(priceDao.priceIsExist(mode)==false) {
+					int result=priceDao.insert(mode, price, duration);
+					if(result>0) {
+						response.getWriter().write("yes");
+					}else {
+						response.getWriter().write("no");
+					}
+				}else {
+					response.getWriter().write("priceIsExist");
+				}
 			}else {
-				response.getWriter().write("no");
+				response.getWriter().write("invalid-duration");
 			}
 		}else {
-			response.getWriter().write("priceIsExist");
+			response.getWriter().write("invalid-price");
 		}
 	}
 }

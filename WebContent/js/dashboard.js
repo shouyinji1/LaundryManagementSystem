@@ -75,6 +75,7 @@ $('.modal').on('hidden.bs.modal', function(){
     $(this).find('form')[0].reset();
 });
 
+// 用于显示菜单栏图标
 (function () {
   'use strict'
 

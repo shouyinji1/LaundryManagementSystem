@@ -115,7 +115,7 @@
 					</div>
 					<div class="form-group row form-inline">
 						  <label class="col-sm-3 control-label">电话号码：</label>
-						  <div class="col-sm-5"><input type="text" class="form-control" id="tel" name="tel" value="${user.tel}" ></div>
+						  <div class="col-sm-5"><input type="text" class="form-control" id="tel" name="tel" value="${user.tel}" oninput="value=value.replace(/[^\d]/g,'')"></div>
 					</div>
 				  </form>
 				  </div>
@@ -131,18 +131,19 @@
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
+					<div class="modal-header"><h4 class="modal-title">修改密码</h4></div>
 					<div class="modal-body">
 						<input type="hidden" name="userid" id="userid" value="${user.id}">
 						用户名：<input type="text" id="name" name="name" value="${user.name}" readonly="readonly">			  	
 					</div>
 					<div class="modal-body">
-						旧密码：<input type="text" id="oldpassword" name="oldpassword" >			  	
+						旧密码：<input type="password" id="oldpassword" name="oldpassword" >			  	
 					</div>
 					<div class="modal-body">
-						新密码：<input type="text" id="newpassword" name="newpassword" >			  	
+						新密码：<input type="password" id="newpassword" name="newpassword" >			  	
+					</div>
+					<div class="modal-body">
+						确认新密码：<input type="password" id="newpassword1" name="newpassword" >			  	
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -161,6 +162,11 @@
 			function updatePassword(){
 				var oldpassword=$("#oldpassword").val();
 				var newpassword=$("#newpassword").val();
+				var newpassword1=$("#newpassword1").val();
+				if(newpassword != newpassword1){
+					alert("确认密码与新密码不一致");
+					return;
+				}
 				if(oldpassword!='${user.password}'){
 					alert("原始密码输入错误，请重试")
 					return;

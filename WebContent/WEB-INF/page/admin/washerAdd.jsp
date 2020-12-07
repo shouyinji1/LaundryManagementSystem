@@ -21,7 +21,7 @@
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item">洗衣机管理</li>
+          <li class="breadcrumb-item"><a href="washerList.adminServlet">洗衣机管理</a></li>
           <li class="breadcrumb-item active"><a href="#">添加洗衣机</a></li>
         </ul>
       </div>

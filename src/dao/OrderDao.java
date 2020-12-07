@@ -119,7 +119,7 @@ public class OrderDao {
 				order.setUserID(rs.getString("UserID"));
 				order.setWasherID(rs.getString("WasherID"));
 				order.setMode(rs.getString("Mode"));
-				order.setGeneratedTime(rs.getString("GeneratedTime"));
+				order.setGeneratedTime(rs.getString("GeneratedTime").substring(0,19));
 				results.add(order);
 			}
 			rs.close();
@@ -147,7 +147,7 @@ public class OrderDao {
 				order.setUserID(rs.getString("UserID"));
 				order.setWasherID(rs.getString("WasherID"));
 				order.setMode(rs.getString("Mode"));
-				order.setGeneratedTime(rs.getString("GeneratedTime"));
+				order.setGeneratedTime(rs.getString("GeneratedTime").substring(0,19));
 				results.add(order);
 			}
 			rs.close();
@@ -195,7 +195,7 @@ public class OrderDao {
 				order.setUserID(rs.getString("UserID"));
 				order.setWasherID(rs.getString("WasherID"));
 				order.setMode(rs.getString("Mode"));
-				order.setGeneratedTime(rs.getString("GeneratedTime"));
+				order.setGeneratedTime(rs.getString("GeneratedTime").substring(0, 19));
 			}
 			rs.close();
 			ps.close();

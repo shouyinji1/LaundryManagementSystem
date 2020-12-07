@@ -21,7 +21,7 @@
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item">价目管理</li>
+          <li class="breadcrumb-item"><a href="priceList.adminServlet">价目管理</a></li>
           <li class="breadcrumb-item active"><a href="#">洗衣价目添加</a></li>
         </ul>
       </div>
@@ -38,15 +38,15 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="control-label col-md-3">洗衣价格：</label>
+					<label class="control-label col-md-3">价格(元)：</label>
 					<div class="col-md-8">
-						<input name="price" id="price" class="form-control" type="text" placeholder="请输入洗衣价格">
+						<input name="price" id="price" class="form-control" type="text" placeholder="请输入洗衣价格，范围[0.00,10000.00]">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="control-label col-md-3">洗衣时长：</label>
+					<label class="control-label col-md-3">时长(分钟)：</label>
 					<div class="col-md-8">
-						<input name="duration" id="duration" class="form-control" type="text" placeholder="请输入洗衣时长">
+						<input name="duration" id="duration" class="form-control" type="text" placeholder="请输入洗衣时长，范围[0,10000]" oninput="value=value.replace(/[^\d]/g,'')">
 					</div>
 				</div>
               </div>
@@ -86,6 +86,10 @@
 							}else if(res=="no"){
 								alert("系统异常，新增数据失败，3秒后跳回页面");
 								setTimeout("location.href='priceList.adminServlet'",3000);
+							}else if(res=="invalid-duration"){
+								alert("洗衣时长输入非法，必须输入范围在[0, 10000]的整数");
+							}else if(res="invalid-price"){
+								alert("洗衣价格输入非法，必须输入范围在[0.00, 10000.00]的实数");
 							}
 						},
 						error:function(){ 
