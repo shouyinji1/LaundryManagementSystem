@@ -13,8 +13,8 @@
 * Tomcat 9
 * Eclipse IDE 2020-09
 * OpenJDK 11.0.9
-* javac 1.8.0\_272
-* mariadb  Ver 15.1 Distrib 10.3.25-MariaDB
+* javac 11.0.9.1
+* mariadb  Ver 15.1 Distrib 10.3.25-MariaDB or MySQL Version<8
 
 #### 1.2 分包结构
 
