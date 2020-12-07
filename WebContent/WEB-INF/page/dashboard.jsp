@@ -67,7 +67,7 @@
 					</li>
 				  <c:if test="${not empty dashboardInfo.menu3 && !(dashboardInfo.menu3 eq null)}">
 					  <li class="nav-item">
-						<a class="nav-link" href="#" id="menu3" onclick="changeStatus(3);">
+						<a class="nav-link" href="#" id="menu3">
 							<span data-feather="users"></span>
 						  ${dashboardInfo.menu3}
 						</a>
@@ -75,7 +75,7 @@
 				  </c:if>
 				  <c:if test="${not empty dashboardInfo.menu4 && !(dashboardInfo.menu4 eq null)}">
 					  <li class="nav-item">
-						<a class="nav-link" href="#" id="menu4" onclick="changeStatus(4);">
+						<a class="nav-link" href="#" id="menu4">
 						  <span data-feather="shopping-cart"></span>
 						  ${dashboardInfo.menu4}
 						</a>
@@ -120,7 +120,7 @@
 				  </form>
 				  </div>
 				  <div class="modal-footer">
-					  <button type="button" class="btn btn-success" data-dismiss="modal" onclick="updateUserInfo()">修改</button>
+					  <button type="button" class="btn btn-success" onclick="updateUserInfo()">修改</button>
 					  <button type="button" class="btn btn-success" data-dismiss="modal" onclick="#">返回</button>
 				  </div>  
 				</div>

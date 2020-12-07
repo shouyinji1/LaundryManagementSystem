@@ -106,11 +106,15 @@ public class DoServlet extends HttpServlet {
 		PrintWriter out= response.getWriter();
 		try {
 			UserDao userDao=new UserDao();
-			int flag=userDao.register(username, password, "user");
-			if(flag==1) {
-				out.write("yes");
-			}else
-				out.write("no");
+			if(userDao.userIsExist(username)==false) {
+				int flag=userDao.register(username, password, "user");
+				if(flag==1) {
+					out.write("yes");
+				}else
+					out.write("no");
+			}else {
+				out.write("userIsExist");
+			}
 		}finally {
 			out.close();
 		}
@@ -123,21 +127,26 @@ public class DoServlet extends HttpServlet {
 	}
 
 	/** 更新用户信息 */
-	public void toUpdateUserInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	public void updateUserInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.setCharacterEncoding("UTF-8");
 		User user=(User)request.getSession().getAttribute("user");
 		String id=user.getId();
 		String username=request.getParameter("username");
 		String tel=request.getParameter("tel");
 		UserDao userDao=new UserDao();
-		int flag=userDao.updateUserInfo(username, tel,id);
-		if(flag==1) {
-			response.getWriter().write("yes");
-			user.setName(username);
-			user.setTel(tel);
-			request.getSession().setAttribute("user", user);
+		if((username.equals(user.getName())==false && userDao.userIsExist(username)==false)
+				|| username.equals(user.getName())) {
+			int flag=userDao.updateUserInfo(username, tel,id);
+			if(flag==1) {
+				response.getWriter().write("yes");
+				user.setName(username);
+				user.setTel(tel);
+				request.getSession().setAttribute("user", user);
+			}else {
+				response.getWriter().write("no");
+			}
 		}else {
-			response.getWriter().write("no");
+			response.getWriter().write("userIsExist");
 		}
 	}
 	

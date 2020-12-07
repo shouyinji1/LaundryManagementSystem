@@ -26,7 +26,7 @@
         </ul>
       </div>
       <div class="col-md-6">
-      	<form action="addPrice.adminServlet" method="post" id="myform">
+      	<form id="myform">
           <div class="tile">
             <h3 class="tile-title">添加</h3>
             <div class="tile-body">
@@ -71,15 +71,27 @@
 		$(function(){
 			//匿名函数，没有名字的方法
 			$("#submitBtn").click(function(){
-				//验证表单项是否为空
-				//var washerName = $("#washerName").val();
-				//if(washerName==null || washerName==""){
-				//	alert("类型名称不能为空");
-				//	$("#washerName").focus();	//鼠标自动聚焦到指定的输入框
-				//	return false;
-				//}
-				//提交表单
-				$("#myform").submit();
+				var data = $("#myform").serialize(); 
+				$.ajax({
+						type:'post',  
+						url:'addPrice.adminServlet', 
+						cache: false,
+						data:data,  //重点必须为一个变量如：data
+						dataType:'text', 
+						success:function(res){
+							if(res=='yes'){
+								window.location.href="priceList.adminServlet";
+							}else if(res=='priceIsExist'){
+									alert("该价目已存在");
+							}else if(res=="no"){
+								alert("系统异常，新增数据失败，3秒后跳回页面");
+								setTimeout("location.href='priceList.adminServlet'",3000);
+							}
+						},
+						error:function(){ 
+							 alert("请求失败")
+						}
+				})
 			});
 			$("#retBtn").click(function(){
 				window.location.href="priceList.adminServlet";

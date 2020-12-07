@@ -43,6 +43,8 @@ function toRegister(){
 		success: function (data) {
 			if (data=="no") {
 				alert("注册失败");
+			}else if(data=="userIsExist"){
+				alert("用户已存在");
 	 		}else{
 				alert("注册成功");
 				window.location.href="login.html";

@@ -162,7 +162,7 @@ public class AdminServlet extends HttpServlet {
 	}
 	
 	
-	/******************* 订单管理Servlet ***********************/
+	/******************* 订单管理 ***********************/
 
 	/** 所有订单 */
 	public void orderList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -237,7 +237,7 @@ public class AdminServlet extends HttpServlet {
 	}
 	
 	
-	/****************** 价目管理Servlet *************************/
+	/****************** 价目管理 *************************/
 	
 	/** 所有价目 */
 	public void priceList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -317,12 +317,16 @@ public class AdminServlet extends HttpServlet {
 		String mode=request.getParameter("mode");
 		String price=request.getParameter("price");
 		String duration=request.getParameter("duration");
-		int result=new PriceDao().insert(mode, price, duration);
-		if(result>0) {
-			response.sendRedirect("priceList.adminServlet");
+		PriceDao priceDao=new PriceDao();
+		if(priceDao.priceIsExist(mode)==false) {
+			int result=priceDao.insert(mode, price, duration);
+			if(result>0) {
+				response.getWriter().write("yes");
+			}else {
+				response.getWriter().write("no");
+			}
 		}else {
-			response.getWriter().write("系统异常，新增数据失败，3秒后跳回页面");
-			response.setHeader("refresh", "3;priceList.adminServlet");
+			response.getWriter().write("priceIsExist");
 		}
 	}
 }

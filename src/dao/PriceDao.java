@@ -168,4 +168,29 @@ public class PriceDao {
 		}
 		return price;
 	}
+
+	/** 判断价目在数据库中是否存在
+	 * @return 存在返回true，不存在返回false */
+	public boolean priceIsExist(String mode) {
+		Connection conn = DBUtils.getConnection();
+		String sql = "select * from Price where mode = ?";
+		try{
+			//获取PreparedStatement对象
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ps.setString(1, mode);//给对象属性赋值
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				//数据库中存在此价目
+				return true;
+			}
+			//释放资源
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtils.closeConnection(conn);
+		}
+		return false;
+	}
 }

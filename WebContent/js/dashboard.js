@@ -38,7 +38,7 @@ function updateUserInfo(){
 	var data = $("#fm1").serialize(); 
 	$.ajax({
 			type:'post',  
-			url:'toUpdateUserInfo.do', 
+			url:'updateUserInfo.do', 
 			cache: false,
 			data:data,  //重点必须为一个变量如：data
 			dataType:'text', 
@@ -46,6 +46,8 @@ function updateUserInfo(){
 				if(res=='yes'){
 					  alert("修改成功！");
 					  location.reload();
+				}else if(res=='userIsExist'){
+					alert("使用该新用户名的用户已存在");
 				}else
 					alert("修改失败！");
 			},
@@ -68,6 +70,10 @@ function showModal(id){
 	});
 } 
 
+// 在模态窗口关闭后重置表单
+$('.modal').on('hidden.bs.modal', function(){
+    $(this).find('form')[0].reset();
+});
 
 (function () {
   'use strict'
