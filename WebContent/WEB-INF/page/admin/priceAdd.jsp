@@ -32,19 +32,19 @@
             <div class="tile-body">
               <div class="form-horizontal">
 				<div class="form-group row">
-					<label class="control-label col-md-3">洗衣模式</label>
+					<label class="control-label col-md-3">洗衣模式：</label>
 					<div class="col-md-8">
 						<input name="mode" id="mode" class="form-control" type="text" placeholder="请输入洗衣模式">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="control-label col-md-3">洗衣价格</label>
+					<label class="control-label col-md-3">洗衣价格：</label>
 					<div class="col-md-8">
 						<input name="price" id="price" class="form-control" type="text" placeholder="请输入洗衣价格">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="control-label col-md-3">洗衣时长</label>
+					<label class="control-label col-md-3">洗衣时长：</label>
 					<div class="col-md-8">
 						<input name="duration" id="duration" class="form-control" type="text" placeholder="请输入洗衣时长">
 					</div>

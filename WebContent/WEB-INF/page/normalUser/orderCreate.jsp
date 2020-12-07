@@ -22,7 +22,8 @@
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item active"><a href="#">创建订单</a></li>
+          <li class="breadcrumb-item active"><a href="#">挑选洗衣机</a></li>
+			<li class="breadcrumb-item active"><a href="#">创建订单</a></li>
         </ul>
       </div>
       <div class="col-md-6">

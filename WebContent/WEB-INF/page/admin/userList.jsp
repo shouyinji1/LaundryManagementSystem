@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>用户列表</title>
+	<title>用户管理</title>
 	<!-- <link href="bootstrap-4.5.3-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
 	<link href="css/main.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
@@ -21,12 +21,11 @@
 <body>
 	<div class="app-title">
 		<div>
-		  <h2>普通用户列表</h2>
+		  <h2>普通用户管理</h2>
 		</div>
 		<ul class="app-breadcrumb breadcrumb side">
 			<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
 			<li class="breadcrumb-item">用户管理</li>
-			<li class="breadcrumb-item active"><a href="#">用户管理</a></li>
 		</ul>
       </div>
       <div class="row">
@@ -40,6 +39,7 @@
 					<td>用户ID</td>
 					<td>用户名称</td>
 					<td>用户电话</td>
+					<td>操作</td>
                   </tr>
                 </thead>
                 <tbody>

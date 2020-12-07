@@ -1,5 +1,25 @@
 /* globals Chart:false, feather:false */
 
+
+$(function(){
+    $("#menu1").click(function() {
+        $("a").removeClass('active');  // 删除其他li元素的样式
+        $(this).addClass('active');	// 添加当前元素的样式
+    });
+    $("#menu2").click(function() {
+        $("a").removeClass('active');  // 删除其他li元素的样式
+        $(this).addClass('active');	// 添加当前元素的样式
+    });
+    $("#menu3").click(function() {
+        $("a").removeClass('active');  // 删除其他li元素的样式
+        $(this).addClass('active');	// 添加当前元素的样式
+    });
+    $("#menu4").click(function() {
+        $("a").removeClass('active');  // 删除其他li元素的样式
+        $(this).addClass('active');	// 添加当前元素的样式
+    });
+});
+
 function loadWasher(){
 	$.ajax({  
 		url:"selectAllWasherServlet.do",//servlet文件的名称

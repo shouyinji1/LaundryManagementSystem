@@ -18,11 +18,12 @@
 <body>
       <div class="app-title">
         <div>
-          <p>洗衣机信息修改</p>
+          <p>修改洗衣机信息</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item active"><a href="#">信息修改</a></li>
+          <li class="breadcrumb-item active"><a href="#">洗衣机管理</a></li>
+			<li class="breadcrumb-item active"><a href="#">修改洗衣机信息</a></li>
         </ul>
       </div>
       <div class="col-md-6">
@@ -38,13 +39,13 @@
                   </div>
                 </div>
 				<div class="form-group row">
-					<label class="control-label col-md-3">设备名称</label>
+					<label class="control-label col-md-3">设备名称：</label>
 					<div class="col-md-8">
 						<input name="name" id="name" class="form-control" type="text" value="${washer.name}">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="control-label col-md-3">设备位置</label>
+					<label class="control-label col-md-3">设备位置：</label>
 					<div class="col-md-8">
 						<input name="location" id="location" class="form-control" type="text" value="${washer.location}">
 					</div>

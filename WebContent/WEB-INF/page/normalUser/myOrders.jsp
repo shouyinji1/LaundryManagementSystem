@@ -25,8 +25,7 @@
 		</div>
 		<ul class="app-breadcrumb breadcrumb side">
 			<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-			<li class="breadcrumb-item">订单管理</li>
-			<li class="breadcrumb-item active"><a href="#">类型管理</a></li>
+			<li class="breadcrumb-item">我的订单</li>
 		</ul>
       </div>
       <div class="row">
@@ -41,6 +40,7 @@
 					<td>洗衣机编号</td>
 					<td>洗衣模式</td>
 					<td>订单生成时间</td>
+					<td>操作</td>
                   </tr>
                 </thead>
                 <tbody>

@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>类型管理</title>
+	<title>洗衣机管理</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">	<style>
 	body{
@@ -17,12 +17,12 @@
 <body>
       <div class="app-title">
         <div>
-          <p>洗衣机类型添加</p>
+          <p>添加洗衣机</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
           <li class="breadcrumb-item">洗衣机管理</li>
-          <li class="breadcrumb-item active"><a href="#">洗衣机添加</a></li>
+          <li class="breadcrumb-item active"><a href="#">添加洗衣机</a></li>
         </ul>
       </div>
       <div class="col-md-6">
@@ -32,13 +32,13 @@
             <div class="tile-body">
               <div class="form-horizontal">
 				<div class="form-group row">
-					<label class="control-label col-md-3">设备名称</label>
+					<label class="control-label col-md-3">设备名称：</label>
 					<div class="col-md-8">
 						<input name="name" id="name" class="form-control" type="text" placeholder="请输入类型名称">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="control-label col-md-3">设备位置</label>
+					<label class="control-label col-md-3">设备位置：</label>
 					<div class="col-md-8">
 						<input name="location" id="location" class="form-control" type="text" placeholder="请输入类型名称">
 					</div>

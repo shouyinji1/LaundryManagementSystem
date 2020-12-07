@@ -18,11 +18,12 @@
 <body>
       <div class="app-title">
         <div>
-          <p>洗衣价目修改</p>
+          <p>修改洗衣价目</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item active"><a href="#">价目修改</a></li>
+          <li class="breadcrumb-item active"><a href="#">价目管理</a></li>
+			<li class="breadcrumb-item active"><a href="#">修改洗衣价目</a></li>
         </ul>
       </div>
       <div class="col-md-6">

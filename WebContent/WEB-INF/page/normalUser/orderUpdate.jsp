@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>创建订单</title>
+<title>修改订单</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">	
 	<style>
@@ -22,7 +22,8 @@
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item active"><a href="#">修改订单</a></li>
+          <li class="breadcrumb-item active"><a href="#">我的订单</a></li>
+			<li class="breadcrumb-item active"><a href="#">修改订单</a></li>
         </ul>
       </div>
       <div class="col-md-6">

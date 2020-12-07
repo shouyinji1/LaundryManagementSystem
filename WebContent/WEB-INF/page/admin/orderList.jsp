@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>订单列表</title>
+	<title>订单管理</title>
 	<!-- <link href="bootstrap-4.5.3-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
 	<link href="css/main.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
@@ -21,12 +21,11 @@
 <body>
 	<div class="app-title">
 		<div>
-		  <h2>订单列表</h2>
+		  <h2>订单管理</h2>
 		</div>
 		<ul class="app-breadcrumb breadcrumb side">
 			<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
 			<li class="breadcrumb-item">订单管理</li>
-			<li class="breadcrumb-item active"><a href="#">类型管理</a></li>
 		</ul>
       </div>
       <div class="row">
@@ -42,6 +41,7 @@
 					<td>洗衣机ID</td>
 					<td>洗衣模式</td>
 					<td>订单生成时间</td>
+					<td>操作</td>
                   </tr>
                 </thead>
                 <tbody>

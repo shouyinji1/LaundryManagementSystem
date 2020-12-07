@@ -39,10 +39,8 @@
 			<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
 			  <span class="navbar-toggler-icon"></span>
 			</button>
-			<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
 			<li class="navbar px-0 dropdown"><a class="nav-link text-nowrap" href="#" data-toggle="dropdown">${user.name}</a>
 			  <ul class="dropdown-menu dropdown-menu-md-right">
-				<!-- <li><a class="dropdown-item" href="javascript:changeMenu('getUserInfo.do')"><i class="fa fa-cog fa-lg"></i>个人信息</a></li> -->
 				<li><a class="dropdown-item" data-toggle="modal" data-target="#showUserInfoModal"><i class="fa fa-cog fa-lg"></i>个人信息</a></li>
 				<li><a class="dropdown-item" href="javascript:showModal('#myModal')"><i class="fa fa-user fa-lg"></i>修改密码</a></li>
 				<li><a class="dropdown-item" href="logoutServlet.do"><i class="fa fa-sign-out fa-lg"></i>退出登录</a></li>
@@ -69,7 +67,7 @@
 					</li>
 				  <c:if test="${not empty dashboardInfo.menu3 && !(dashboardInfo.menu3 eq null)}">
 					  <li class="nav-item">
-						<a class="nav-link" href="#" id="menu3">
+						<a class="nav-link" href="#" id="menu3" onclick="changeStatus(3);">
 							<span data-feather="users"></span>
 						  ${dashboardInfo.menu3}
 						</a>
@@ -77,7 +75,7 @@
 				  </c:if>
 				  <c:if test="${not empty dashboardInfo.menu4 && !(dashboardInfo.menu4 eq null)}">
 					  <li class="nav-item">
-						<a class="nav-link" href="#" id="menu4">
+						<a class="nav-link" href="#" id="menu4" onclick="changeStatus(4);">
 						  <span data-feather="shopping-cart"></span>
 						  ${dashboardInfo.menu4}
 						</a>
