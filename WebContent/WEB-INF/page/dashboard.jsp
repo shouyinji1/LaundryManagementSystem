@@ -181,7 +181,7 @@
 							data: {id:$("#userid").val(),newpassword:newpassword},
 							success: function (data) {
 								if (data=="no") {
-									alert("修改失败，请重试或联系管理员");
+									alert("修改失败，请检查输入是否过长或非法");
 								}else{
 									alert("修改成功！")
 									window.location.href="logoutServlet.do";

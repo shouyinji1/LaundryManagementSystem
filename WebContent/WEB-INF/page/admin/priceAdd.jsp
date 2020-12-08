@@ -84,7 +84,7 @@
 							}else if(res=='priceIsExist'){
 									alert("该价目已存在");
 							}else if(res=="no"){
-								alert("系统异常，新增数据失败，3秒后跳回页面");
+								alert("系统异常，新增数据失败，3秒后跳回价目表页面");
 								setTimeout("location.href='priceList.adminServlet'",3000);
 							}else if(res=="invalid-duration"){
 								alert("洗衣时长输入非法，必须输入范围在[0, 10000]的整数");

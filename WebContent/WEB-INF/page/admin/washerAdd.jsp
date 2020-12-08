@@ -26,7 +26,7 @@
         </ul>
       </div>
       <div class="col-md-6">
-      	<form action="washerAdd.adminServlet" method="post" id="myform">
+      	<form action="addWasher.adminServlet" method="post" id="myform">
           <div class="tile">
             <h3 class="tile-title">添加</h3>
             <div class="tile-body">

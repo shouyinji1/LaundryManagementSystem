@@ -117,8 +117,9 @@ public class AdminServlet extends HttpServlet {
 	}
 	
 	/** 新增洗衣机数据 */
-	public void washerAdd(HttpServletRequest request,HttpServletResponse response) throws IOException {
+	public void addWasher(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		Washer washer=new Washer();
 		washer.setName(request.getParameter("name"));
 		washer.setLocation(request.getParameter("location"));
@@ -127,13 +128,13 @@ public class AdminServlet extends HttpServlet {
 		if(result>0) {
 			response.sendRedirect("washerList.adminServlet");
 		}else {
-			response.getWriter().write("系统异常，新增数据失败，3秒后跳回页面");
-			response.setHeader("refresh", "3;toAddType.adminServlet");
+			response.getWriter().write("系统异常，新增数据失败，您的输入可能不合法，3秒后跳回洗衣机管理");
+			response.setHeader("refresh", "3;washerList.adminServlet");
 		}
 	}
 	
 	/** 更新洗衣机页面跳转 */
-	public void updateWasher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	public void toUpdateWasher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String  id=	request.getParameter("id");
 		Washer washer=new WasherDao().queryWasherInfoById(id);
 		request.setAttribute("washer", washer);
@@ -157,7 +158,7 @@ public class AdminServlet extends HttpServlet {
 			//重定向   在此sevlet方法中调用另外一个方法
 			response.sendRedirect("washerList.adminServlet");
 		}else{
-			response.getWriter().write("系统异常,保存数据失败,3秒后跳转回修改页面"+result);
+			response.getWriter().write("系统异常,更新数据失败,您的输入可能不合法,3秒后跳转回洗衣机管理页面");
 			response.setHeader("refresh", "3;url=washerList.adminServlet");
 		}
 	}

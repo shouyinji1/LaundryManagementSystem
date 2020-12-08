@@ -58,7 +58,7 @@
 						<td>${washer.location}</td>
 						<td>${washer.userID}</td>
 						<td>
-							<button class="btn btn-success" type="button" onclick="window.location.href='updateWasher.adminServlet?id='+${washer.id}">修改</button>
+							<button class="btn btn-success" type="button" onclick="window.location.href='toUpdateWasher.adminServlet?id='+${washer.id}">修改</button>
 							<c:if test="${empty washer.userID}">
 								<button class="btn btn-danger" type="button" onclick="deleteById(${washer.id})">删除</button>
 							</c:if>
