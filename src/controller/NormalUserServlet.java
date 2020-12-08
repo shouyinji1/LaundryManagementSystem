@@ -138,7 +138,7 @@ public class NormalUserServlet extends HttpServlet {
 		}
 	}
 	
-	/** 分页查询洗衣机信息 */
+	/** 分页查询订单信息 */
 	protected void myOrders(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user=(User)request.getSession().getAttribute("user");
 		// 获取分页对象
@@ -188,7 +188,7 @@ public class NormalUserServlet extends HttpServlet {
 			//重定向   在此sevlet方法中调用另外一个方法
 			response.sendRedirect("myOrders.normalUserServlet");
 		}else{
-			response.getWriter().write("系统异常,保存数据失败,3秒后跳转回修改页面"+flag);
+			response.getWriter().write("系统异常,保存数据失败,3秒后跳转回我的订单页面");
 			response.setHeader("refresh", "3;url=myOrders.normalUserServlet");
 		}
 	}

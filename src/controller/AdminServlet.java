@@ -128,7 +128,7 @@ public class AdminServlet extends HttpServlet {
 		if(result>0) {
 			response.sendRedirect("washerList.adminServlet");
 		}else {
-			response.getWriter().write("系统异常，新增数据失败，您的输入可能不合法，3秒后跳回洗衣机管理");
+			response.getWriter().write("系统异常，新增数据失败，您的输入可能不合法，3秒后跳回洗衣机管理界面");
 			response.setHeader("refresh", "3;washerList.adminServlet");
 		}
 	}
