@@ -10,6 +10,7 @@ import com.mysql.jdbc.PreparedStatement;
 import entity.Price;
 import utils.DBUtils;
 
+/** 价目表的数据库操作 */
 public class PriceDao {
 	/** 增加记录 */
 	public int insert(String mode,String price, String duration) {

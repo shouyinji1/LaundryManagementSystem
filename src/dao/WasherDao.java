@@ -78,7 +78,7 @@ public class WasherDao {
 		return results;
 	}
 	
-	//查询总记录数
+	/** 查询总记录数 */
 	public int queryInfosCount() {
 		String sql="select count(id) from Washer";
 		Connection conn=DBUtils.getConnection();
@@ -123,7 +123,8 @@ public class WasherDao {
 		return washer;
 	}
 	
-	//删除洗衣机信息，返回一个int值表示状态,1：成功，0失败
+	/** 删除洗衣机信息
+	 * @return 1：成功，0失败 */
 	public int deleteById(String id) {
 		Connection conn = DBUtils.getConnection();
 		String sql = "delete from Washer where id = ?;";
@@ -141,7 +142,8 @@ public class WasherDao {
 		return flag;
 	}
 	
-	//插入洗衣机，1成功，0失败
+	/** 插入洗衣机
+	 * @return 1成功，0失败 */
 	public int insert(Washer washer) {
 		String sql="insert into Washer(name,location) values(?,?);";
 		Connection conn = DBUtils.getConnection();
@@ -160,7 +162,8 @@ public class WasherDao {
 		return flag;
 	}
 
-	//更新洗衣机信息，1：成功，0失败
+	/** 更新洗衣机信息
+	 * @return 1：成功，0失败 */
 	public int updateById(String id,String name,String location) {
 		Connection conn = DBUtils.getConnection();
 		String sql = "update Washer set name=?,location=? where ID=?";

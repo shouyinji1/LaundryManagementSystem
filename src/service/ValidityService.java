@@ -1,5 +1,6 @@
 package service;
 
+/** 合法性检查服务，用于检查输入的合法性 */
 public class ValidityService {
 	/**
 	* 查看一个字符串是否可以转换为范围在[lower,upper]整数

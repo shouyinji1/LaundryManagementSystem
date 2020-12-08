@@ -6,6 +6,7 @@ import dao.OrderDao;
 import entity.Order;
 import entity.Page;
 
+/** 订单服务 */
 public class OrderService {
 	OrderDao orderDao=new OrderDao();
 

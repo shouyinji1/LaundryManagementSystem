@@ -16,6 +16,7 @@ import entity.User;
 
 /**
  * Servlet implementation class AllServlet
+ * 登录/注册和用户信息、密码修改的Servlet
  */
 @WebServlet("*.do")
 public class DoServlet extends HttpServlet {

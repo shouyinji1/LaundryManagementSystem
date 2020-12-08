@@ -25,6 +25,7 @@ import service.WasherService;
 
 /**
  * Servlet implementation class NormalUserServlet
+ * 普通用户的Servlet
  */
 @WebServlet("*.normalUserServlet")
 public class NormalUserServlet extends HttpServlet {

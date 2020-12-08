@@ -10,6 +10,7 @@ import com.mysql.jdbc.PreparedStatement;
 import entity.User;
 import utils.DBUtils;
 
+/** 用户表的数据库操作 */
 public class UserDao {
 	/** 判断用户在数据库中是否存在
 	 * @return 存在返回true，不存在返回false */

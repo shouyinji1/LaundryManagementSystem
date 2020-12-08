@@ -6,6 +6,7 @@ import dao.WasherDao;
 import entity.Page;
 import entity.Washer;
 
+/** 洗衣机服务 */
 public class WasherService {
 	WasherDao washerDao=new WasherDao();
 

@@ -10,6 +10,7 @@ import com.mysql.jdbc.PreparedStatement;
 import entity.Order;
 import utils.DBUtils;
 
+/** 订单相关的数据库操作 */
 public class OrderDao {
 	/** 插入记录 */
 	public int insert(String userID,String washerID,String mode,String generatedTime) {
@@ -160,7 +161,7 @@ public class OrderDao {
 		return results;
 	}
 
-	//查询总记录数
+	/** 查询总记录数 */
 	public int queryInfosCount() {
 		String sql="select count(id) from `Order`";
 		Connection conn=DBUtils.getConnection();

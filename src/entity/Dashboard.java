@@ -2,6 +2,7 @@ package entity;
 
 import java.io.Serializable;
 
+/** 首页实体类 */
 public class Dashboard implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -22,6 +23,7 @@ public class Dashboard implements Serializable{
 		return level;
 	}
 
+	/** 设置用户级别，并根据不同的用户级别初始化首页文字信息 */
 	public void setLevel(String level) {
 		this.level = level;
 		switch (level) {
@@ -94,6 +96,7 @@ public class Dashboard implements Serializable{
 		this.link4 = link4;
 	}
 	
+	/** 普通用户的首页初始化 */
 	private void initForNormalUser() {
 		this.brand="欢迎光临！";
 		this.iframe_src="washerList.normalUserServlet";
@@ -106,6 +109,8 @@ public class Dashboard implements Serializable{
 		this.link3=null;
 		this.link4=null;
 	}
+	
+	/** 管理员的首页初始化 */
 	private void initForAdmin() {
 		this.brand="洗衣房管理";
 		this.iframe_src="washerList.adminServlet";

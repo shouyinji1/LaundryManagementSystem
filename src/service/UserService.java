@@ -6,6 +6,7 @@ import dao.UserDao;
 import entity.Page;
 import entity.User;
 
+/** 用户服务 */
 public class UserService {
 	UserDao userDao=new UserDao();
 

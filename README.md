@@ -4,16 +4,11 @@
 
 ### 1. 开发、环境要求及说明
 
-本项目仍处于初始开发阶段。本文中提到的教程与说明供组员使用。
-
-数据库的结构可能随时发生变更，请组员留意`mysql.sql`的更新。
-
 #### 1.1 本项目主要开发工具和环境：
 
 * Tomcat 9
 * Eclipse IDE 2020-09
 * OpenJDK 11.0.9
-* javac 11.0.9.1
 * mariadb  Ver 15.1 Distrib 10.3.25-MariaDB or MySQL Version<8
 
 #### 1.2 分包结构
@@ -23,7 +18,7 @@
 * controller: 用于处理页面,主要是Servlet
 * utils: 数据库连接工具
 * filter: 拦截器
-* tag: 分页工具包
+* tag: 自定义标签工具包
 * service: 后台服务
 
 

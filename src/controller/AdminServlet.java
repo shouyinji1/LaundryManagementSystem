@@ -27,6 +27,7 @@ import service.WasherService;
 
 /**
  * Servlet implementation class AdminServlet
+ * 管理员的Servlet
  */
 @WebServlet("*.adminServlet")
 public class AdminServlet extends HttpServlet {

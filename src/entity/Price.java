@@ -2,6 +2,7 @@ package entity;
 
 import java.io.Serializable;
 
+/** 价目信息实体类 */
 public class Price implements Serializable{
 	private static final long serialVersionUID = 1L;
 	

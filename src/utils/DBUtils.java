@@ -5,7 +5,10 @@ import java.sql.SQLException;
 
 import com.mysql.jdbc.Connection;
 
+/** 数据库连接工具类 */
 public class DBUtils {
+	/** 创建数据库连接
+	 * @return Connection对象 */
 	public static Connection getConnection(){
     	String dbUserName = "sa";
     	String dbUserPasswd = "123456";

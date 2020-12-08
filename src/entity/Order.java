@@ -2,14 +2,15 @@ package entity;
 
 import java.io.Serializable;
 
+/** 订单实体类 */
 public class Order implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	private String id;
-	private String userID;
-	private String washerID;
-	private String mode;
-	private String generatedTime;
+	private String id;	// 订单ID
+	private String userID;	// 用户ID
+	private String washerID;	// 洗衣机ID
+	private String mode;	// 洗衣模式
+	private String generatedTime;	// 订单生成时间
 
 	public String getId() {
 		return id;
