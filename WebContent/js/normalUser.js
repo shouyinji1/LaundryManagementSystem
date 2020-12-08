@@ -47,6 +47,7 @@ function withdrawOrderByWasherID(id){
 	});
 }
 
+// 更新订单页面跳转
 function updateOrder(id){
 	window.location.href="toUpdateOrder.normalUserServlet?id="+id;
 }

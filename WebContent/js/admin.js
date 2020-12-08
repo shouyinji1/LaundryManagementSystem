@@ -47,9 +47,12 @@ function deleteById(id){
 	});
 }
 
+// 增加洗衣机页面跳转
 function addWasher(){
 	window.location.href="toAddWasher.adminServlet";
 }
+
+// 更新洗衣机页面跳转
 function updateWasher(){
 	window.location.href="updateWasher.adminServlet?id="+id;
 }
@@ -117,6 +120,8 @@ function deletePriceByMode(mode){
 		}
 	});
 }
+
+// 添加洗衣机页面跳转
 function addPrice(){
 	window.location.href="toAddPrice.adminServlet";
 }

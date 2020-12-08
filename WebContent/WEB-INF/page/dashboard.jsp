@@ -159,7 +159,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 		<script src="js/dashboard.js"></script>
 		<script type="text/javascript">
-			function updatePassword(){
+			function updatePassword(){	// 更新密码的检查与提交
 				var oldpassword=$("#oldpassword").val();
 				var newpassword=$("#newpassword").val();
 				var newpassword1=$("#newpassword1").val();

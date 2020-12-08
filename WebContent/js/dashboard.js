@@ -1,39 +1,26 @@
 /* globals Chart:false, feather:false */
 
-
+// 左侧菜单栏点击变色效果
 $(function(){
     $("#menu1").click(function() {
-        $("a").removeClass('active');  // 删除其他li元素的样式
+        $("a").removeClass('active');  // 删除其他a元素的样式
         $(this).addClass('active');	// 添加当前元素的样式
     });
     $("#menu2").click(function() {
-        $("a").removeClass('active');  // 删除其他li元素的样式
+        $("a").removeClass('active');  // 删除其他a元素的样式
         $(this).addClass('active');	// 添加当前元素的样式
     });
     $("#menu3").click(function() {
-        $("a").removeClass('active');  // 删除其他li元素的样式
+        $("a").removeClass('active');  // 删除其他a元素的样式
         $(this).addClass('active');	// 添加当前元素的样式
     });
     $("#menu4").click(function() {
-        $("a").removeClass('active');  // 删除其他li元素的样式
+        $("a").removeClass('active');  // 删除其他a元素的样式
         $(this).addClass('active');	// 添加当前元素的样式
     });
 });
 
-function loadWasher(){
-	$.ajax({  
-		url:"selectAllWasherServlet.do",//servlet文件的名称
-		type:"GET",
-		success:function(e){
-			alert("servlet调用成功！");
-		},
-		error : function() {
-			alert("异常请求！"+data.msg);
-		}
-	});
-}
-
-
+// 更新用户信息
 function updateUserInfo(){
 	var data = $("#fm1").serialize(); 
 	$.ajax({
@@ -57,6 +44,7 @@ function updateUserInfo(){
 	})
 }
 
+// 显示模态框
 function showModal(id){
 	//打开隐藏的模态框
 	$(id).modal();

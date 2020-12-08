@@ -69,7 +69,7 @@
      </div>
 	<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript">
-		 $(function(){
+		 $(function(){	// 更新洗衣机信息表单提交
 			//匿名函数   没有名字的方法
 			$("#submitBtn").click(function(){
 				//验证表单项是否为空
