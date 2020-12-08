@@ -133,7 +133,7 @@ public class NormalUserServlet extends HttpServlet {
 			//重定向   在此sevlet方法中调用另外一个方法
 			response.sendRedirect("washerList.normalUserServlet");
 		}else{
-			response.getWriter().write("系统异常,保存数据失败,3秒后跳转回修改页面"+flag);
+			response.getWriter().write("系统异常,保存数据失败,3秒后跳转回洗衣机挑选页面"+flag);
 			response.setHeader("refresh", "3;url=washerList.normalUserServlet");
 		}
 	}
