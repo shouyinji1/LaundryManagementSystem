@@ -34,13 +34,13 @@
 				<div class="form-group row">
 					<label class="control-label col-md-3">设备名称：</label>
 					<div class="col-md-8">
-						<input name="name" id="name" class="form-control" type="text" placeholder="请输入类型名称">
+						<input name="name" id="name" class="form-control" type="text" placeholder="请输入设备名称">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="control-label col-md-3">设备位置：</label>
 					<div class="col-md-8">
-						<input name="location" id="location" class="form-control" type="text" placeholder="请输入类型名称">
+						<input name="location" id="location" class="form-control" type="text" placeholder="请输入设备位置">
 					</div>
 				</div>
               </div>

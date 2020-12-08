@@ -40,9 +40,9 @@
                 <thead>
                   <tr>
                     <td>No.</td>
-					<td>洗衣机ID</td>
-					<td>洗衣机名称</td>
-					<td>洗衣机位置</td>
+					<td>设备ID</td>
+					<td>设备名称</td>
+					<td>设备位置</td>
 					<td>使用者ID</td>
 					<td>操作</td>
                   </tr>
