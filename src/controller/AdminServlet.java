@@ -300,8 +300,10 @@ public class AdminServlet extends HttpServlet {
 		PriceDao priceDao=new PriceDao();
 		if(ValidityService.isValidPrice(price)) {
 			if(ValidityService.isValidDuration(duration)) {
+				// 如果修改价目，一并删除所有与该价目相关的订单
 				int result=priceDao.update(mode, price, duration);
-				if(result>0) {
+				if(result==1) {
+					new OrderDao().deleteByMode(mode);
 					response.getWriter().write("yes");
 				}else {
 					response.getWriter().write("no");
