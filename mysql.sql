@@ -25,7 +25,7 @@ create table Washer(
 ) CHARSET=utf8 comment '洗衣机信息表';
 
 create table Price(
-	Mode NCHAR(10) PRIMARY KEY COMMENT '洗衣价目表',
+	Mode NCHAR(10) PRIMARY KEY COMMENT '洗衣模式',
 	Price FLOAT(6,2) NOT NULL COMMENT '洗衣价格',
 	Duration INT NOT NULL COMMENT '洗衣时长（以分钟计）'
 ) CHARSET=utf8 comment '洗衣价目表';
