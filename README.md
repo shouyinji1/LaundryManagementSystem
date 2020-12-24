@@ -25,7 +25,7 @@
 
 #### 1.3 系统模块图
 
-![Module diagram of LaundryManagementSystem](./Module_diagram_of_LaundryManagementSystem_2020-12-24-2035.png)
+![Module diagram of LaundryManagementSystem](./Module_diagram_of_LaundryManagementSystem_2020-12-24-2102.png)
 
 #### 1.4 功能说明
 
