@@ -1,6 +1,6 @@
 ﻿# LaundryManagementSystem
 
-洗衣房管理烂系统
+洗衣房管理烂系统，有些地方编写得不规范
 
 ### 1. 开发、环境要求及说明
 
@@ -23,11 +23,8 @@
 * tag: 自定义标签工具包
 * service: 后台服务
 
-#### 1.3 系统模块图
 
-![Module diagram of LaundryManagementSystem](./Module_diagram_of_LaundryManagementSystem_2020-12-24-2121.png)
-
-#### 1.4 功能说明
+#### 1.3 功能说明
 
 * 普通用户不能看到被别人选中的洗衣机；
 
